@@ -1,0 +1,67 @@
+* {
+  /*accounts for border or padding values when you specify an element's width and height*/
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: gray;
+}
+
+html {
+  height: 100%;
+}
+
+/* tier list styling */
+.tier {
+  display: flex;
+  flex: 1;
+}
+
+.tier h1 {
+  width: 5rem;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+.drag-area {
+  flex-grow: 1;
+  background-color: darkgray;
+  padding: 5px;
+}
+
+#s-tier {
+  background-color: red;
+}
+
+#a-tier {
+  background-color: orange;
+}
+
+#b-tier {
+  background-color: yellow;
+}
+
+#c-tier {
+  background-color: green;
+}
+
+#d-tier {
+  background-color: blue;
+}
+
+#f-tier {
+  background-color: purple;
+}
+
+.drag-area {
+  background-color: black;
+}
+
+/* options styling */
+.submissions {
+  font-size: 2rem;
+}
