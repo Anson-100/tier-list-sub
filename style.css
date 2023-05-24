@@ -1,67 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+
 * {
   /*accounts for border or padding values when you specify an element's width and height*/
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 body {
-  background-color: gray;
+  background-color: black;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 html {
   height: 100%;
 }
 
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 /* tier list styling */
 .tier {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
 }
 
 .tier h1 {
   width: 5rem;
+  text-align: center;
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
-.drag-area {
-  flex-grow: 1;
-  background-color: darkgray;
-  padding: 5px;
+.rank {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  background-color: rgb(25, 25, 25);
+  font-size: 3.85rem;
 }
 
 #s-tier {
-  background-color: red;
+  background-color: rgb(0, 191, 255);
 }
 
 #a-tier {
-  background-color: orange;
+  background-color: rgb(23, 183, 5);
 }
 
 #b-tier {
-  background-color: yellow;
+  background-color: lime;
 }
 
 #c-tier {
-  background-color: green;
+  background-color: yellow;
 }
 
 #d-tier {
-  background-color: blue;
+  background-color: orange;
 }
 
 #f-tier {
-  background-color: purple;
-}
-
-.drag-area {
-  background-color: black;
+  background-color: red;
 }
 
 /* options styling */
-.submissions {
+.draggable {
   font-size: 2rem;
+  margin: 0.2rem;
+  padding: 0.2rem;
+  background-color: aliceblue;
+  display: inline-block;
+  border: 2px solid black;
+  cursor: move;
+}
+
+.bank {
+  background-color: gray;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.draggable.dragging {
+  opacity: 0.4;
+}
+
+.description {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.3rem;
+  background-color: rgb(178, 178, 178);
+}
+
+/* button styling */
+.criteria-button {
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  font-size: 1.3rem;
+  padding: 0 0.5rem 0 0.5rem;
+  background-color: black;
+  color: white;
+}
+
+.criteria-button:hover {
+  background-color: rgb(51, 51, 51);
+  cursor: pointer;
+}
+
+.criteria-list {
+  display: none;
+  list-style: none;
+  background-color: rgb(202, 202, 202);
+  margin: 0.3rem;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+}
+
+.show {
+  display: block;
+}
+
+/* footer styling */
+footer {
+  color: white;
+  text-align: center;
+  margin-top: auto;
 }
