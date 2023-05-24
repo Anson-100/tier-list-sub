@@ -7,7 +7,7 @@ criteriaButton.addEventListener("click", e => {
   criteriaList.classList.toggle("show")
 })
 
-//drag and drop logic
+//drag and drop logica
 draggables.forEach(draggable => {
   draggable.addEventListener("dragstart", e => {
     draggable.classList.add("dragging")
