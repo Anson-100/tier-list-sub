@@ -2,6 +2,7 @@ const draggables = document.querySelectorAll(".draggable")
 const containers = document.querySelectorAll(".container")
 const criteriaButton = document.querySelector(".criteria-button")
 const criteriaList = document.querySelector(".criteria-list")
+
 //button logic
 criteriaButton.addEventListener("click", e => {
   criteriaList.classList.toggle("show")
@@ -10,6 +11,8 @@ criteriaButton.addEventListener("click", e => {
 //drag and drop logica
 draggables.forEach(draggable => {
   draggable.addEventListener("dragstart", e => {
+    const itemId = draggable.classList[1]
+    e.dataTransfer.setData("text/plain", itemId)
     draggable.classList.add("dragging")
   })
 
@@ -22,12 +25,22 @@ containers.forEach(container => {
   container.addEventListener("dragover", e => {
     e.preventDefault()
     const afterElement = sortDraggableElements(container, e.clientX)
-    console.log(afterElement)
     const draggable = document.querySelector(".dragging")
     if (afterElement == null) {
       container.appendChild(draggable)
     } else {
       container.insertBefore(draggable, afterElement)
+    }
+  })
+
+  container.addEventListener("drop", e => {
+    e.preventDefault()
+    const draggedItemType = e.dataTransfer.getData("text/plain")
+    const draggedItem = document.querySelector(`.${draggedItemType}`)
+    if (container.id === draggedItem.classList[1]) {
+      console.log("correct")
+    } else {
+      console.log("incorrect")
     }
   })
 })

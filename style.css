@@ -76,7 +76,7 @@ h1 {
   background-color: red;
 }
 
-/* options styling */
+/* draggable container/items styling */
 .draggable {
   font-size: 2rem;
   margin: 0.2rem;
@@ -87,11 +87,9 @@ h1 {
   cursor: move;
 }
 
-.bank {
+.draggables {
   background-color: gray;
   flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .draggable.dragging {
@@ -102,13 +100,31 @@ h1 {
   text-align: center;
   font-size: 1.5rem;
   padding: 0.3rem;
-  background-color: rgb(178, 178, 178);
 }
 
-/* button styling */
+.instructions {
+  background-color: gray;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* criteria button and list styling */
+.top {
+  padding: 9px;
+  background-color: rgb(57, 57, 57);
+}
+.button-stuff {
+  text-align: center;
+}
+
+.list-stuff {
+  text-align: center;
+}
+
 .criteria-button {
   border: 2px solid rgb(255, 255, 255);
-  border-radius: 20px;
+  border-radius: 5px;
   font-size: 1.3rem;
   padding: 0 0.5rem 0 0.5rem;
   background-color: black;
@@ -123,14 +139,15 @@ h1 {
 .criteria-list {
   display: none;
   list-style: none;
-  background-color: rgb(202, 202, 202);
+  background-color: gray;
   margin: 0.3rem;
   border-radius: 5px;
   color: rgb(0, 0, 0);
+  padding: 10px;
 }
 
 .show {
-  display: block;
+  display: inline-block;
 }
 
 /* footer styling */
