@@ -85,6 +85,7 @@ h1 {
   display: inline-block;
   border: 2px solid black;
   cursor: move;
+  transition: transform 0.2s ease;
 }
 
 .draggables {
@@ -94,6 +95,7 @@ h1 {
 
 .draggable.dragging {
   opacity: 0.4;
+  transform: scale(1.1);
 }
 
 .description {
@@ -146,8 +148,12 @@ h1 {
   padding: 10px;
 }
 
-.show {
+.criteria-list.show {
   display: inline-block;
+}
+
+.note {
+  color: white;
 }
 
 /* footer styling */

@@ -37,10 +37,26 @@ containers.forEach(container => {
     e.preventDefault()
     const draggedItemType = e.dataTransfer.getData("text/plain")
     const draggedItem = document.querySelector(`.${draggedItemType}`)
+    const draggableItems = Array.from(container.querySelectorAll(".draggable"))
+    const rankValue = draggedItem.dataset.rank
+    const rankNumber = parseInt(rankValue)
+
+    const index = draggableItems.findIndex(item => item === draggedItem)
+    const previousDraggable = draggableItems[index - 1]
+    const nextDraggable = draggableItems[index + 1]
+
     if (container.id === draggedItem.classList[1]) {
-      console.log("correct")
+      if (
+        (previousDraggable &&
+          parseInt(previousDraggable.dataset.rank) > rankNumber) ||
+        (nextDraggable && parseInt(nextDraggable.dataset.rank) < rankNumber)
+      ) {
+        console.log("correct tier, incorrect order")
+      } else {
+        console.log("correct tier, correct order")
+      }
     } else {
-      console.log("incorrect")
+      console.log("incorrect tier")
     }
   })
 })

@@ -11,7 +11,7 @@
   <body>
     <!-- tier list -->
     <div class="content">
-      <div id="tier-list">
+      <div class="tier-list">
         <div class="tier">
           <h1 id="s-tier">S</h1>
           <div class="container rank" id="S">&nbsp;</div>
@@ -63,27 +63,31 @@
               RISK VS REWARD: evaluate the potential gain against the potential
               exposure to counters or escapes
             </li>
+            <li class="note">
+              NOTE: IF MULTIPLE SUBMISSIONS ARE PLACED IN THE SAME TIER, THE
+              ORDER IN WHICH THEY APPEAR MATTERS(BEST--->WORST)
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="draggables">
-        <p class="draggable S one" draggable="true">rnc</p>
-        <p class="draggable B one" draggable="true">triangle</p>
-        <p class="draggable A two" draggable="true">arm triangle</p>
-        <p class="draggable A one" draggable="true">guillotine</p>
-        <p class="draggable S two" draggable="true">heel hook</p>
-        <p class="draggable B two" draggable="true">armbar</p>
-        <p class="draggable C three" draggable="true">d'arce</p>
-        <p class="draggable C two" draggable="true">anaconda</p>
-        <p class="draggable C one" draggable="true">kimura</p>
-        <p class="draggable D one" draggable="true">twister</p>
-        <p class="draggable F one" draggable="true">fish hook</p>
+        <p class="draggable S" draggable="true" data-rank="1">rnc</p>
+        <p class="draggable A" draggable="true" data-rank="2">triangle</p>
+        <p class="draggable B" draggable="true" data-rank="3">arm triangle</p>
+        <p class="draggable A" draggable="true" data-rank="1">guillotine</p>
+        <p class="draggable S" draggable="true" data-rank="2">heel hook</p>
+        <p class="draggable B" draggable="true" data-rank="2">armbar</p>
+        <p class="draggable C" draggable="true" data-rank="1">d'arce</p>
+        <p class="draggable C" draggable="true" data-rank="2">anaconda</p>
+        <p class="draggable B" draggable="true" data-rank="1">kimura</p>
+        <p class="draggable D" draggable="true" data-rank="1">twister</p>
+        <p class="draggable F" draggable="true" data-rank="1">fish hook</p>
       </div>
     </div>
-    <div class="submit-button">
+    <!-- <div class="submit-button">
       <button id="submitBtn">Submit</button>
-    </div>
+    </div> -->
 
     <footer id="footer">Anson Hunnell 2023</footer>
   </body>
