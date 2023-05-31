@@ -98,6 +98,7 @@ h1 {
   transform: scale(1.1);
 }
 
+/* criteria button and list styling */
 .description {
   text-align: center;
   font-size: 1.5rem;
@@ -111,7 +112,12 @@ h1 {
   padding: 5px;
 }
 
-/* criteria button and list styling */
+.scoring-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .top {
   padding: 9px;
   background-color: rgb(57, 57, 57);
@@ -124,7 +130,8 @@ h1 {
   text-align: center;
 }
 
-.criteria-button {
+.criteria-button,
+.scoring-button {
   border: 2px solid rgb(255, 255, 255);
   border-radius: 5px;
   font-size: 1.3rem;
@@ -133,12 +140,19 @@ h1 {
   color: white;
 }
 
-.criteria-button:hover {
-  background-color: rgb(51, 51, 51);
+.scoring-button {
+  width: 5rem;
+  margin: 0.3rem;
+}
+
+.criteria-button:hover,
+.scoring-button:hover {
+  background-color: rgb(62, 58, 80);
   cursor: pointer;
 }
 
-.criteria-list {
+.criteria-list,
+.scoring-system {
   display: none;
   list-style: none;
   background-color: gray;
@@ -148,12 +162,17 @@ h1 {
   padding: 10px;
 }
 
-.criteria-list.show {
+.scoring-system {
+  background-color: rgb(220, 220, 220);
+}
+
+.criteria-list.show,
+.scoring-system.show {
   display: inline-block;
 }
 
 .note {
-  color: white;
+  color: rgb(71, 162, 67);
 }
 
 /* footer styling */

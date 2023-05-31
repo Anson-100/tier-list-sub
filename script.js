@@ -1,14 +1,24 @@
 const draggables = document.querySelectorAll(".draggable")
 const containers = document.querySelectorAll(".container")
 const criteriaButton = document.querySelector(".criteria-button")
+const scoringButton = document.querySelector(".scoring-button")
 const criteriaList = document.querySelector(".criteria-list")
+const scoringSystem = document.querySelector(".scoring-system")
+const scoreDisplay = document.querySelector(".score")
+
+let score = 0
+const pointsPossible = draggables.length * 2
 
 //button logic
 criteriaButton.addEventListener("click", e => {
   criteriaList.classList.toggle("show")
 })
 
-//drag and drop logica
+scoringButton.addEventListener("click", e => {
+  scoringSystem.classList.toggle("show")
+})
+
+//drag and drop logic
 draggables.forEach(draggable => {
   draggable.addEventListener("dragstart", e => {
     const itemId = draggable.classList[1]
@@ -32,32 +42,41 @@ containers.forEach(container => {
       container.insertBefore(draggable, afterElement)
     }
   })
-
+  // sorting and scoring logic
   container.addEventListener("drop", e => {
     e.preventDefault()
     const draggedItemType = e.dataTransfer.getData("text/plain")
     const draggedItem = document.querySelector(`.${draggedItemType}`)
     const draggableItems = Array.from(container.querySelectorAll(".draggable"))
-    const rankValue = draggedItem.dataset.rank
-    const rankNumber = parseInt(rankValue)
+    // const rankValue = draggedItem.dataset.rank
+    // const rankNumber = parseInt(rankValue)
 
     const index = draggableItems.findIndex(item => item === draggedItem)
     const previousDraggable = draggableItems[index - 1]
     const nextDraggable = draggableItems[index + 1]
 
     if (container.id === draggedItem.classList[1]) {
-      if (
-        (previousDraggable &&
-          parseInt(previousDraggable.dataset.rank) > rankNumber) ||
-        (nextDraggable && parseInt(nextDraggable.dataset.rank) < rankNumber)
-      ) {
-        console.log("correct tier, incorrect order")
-      } else {
-        console.log("correct tier, correct order")
-      }
+      console.log("correct tier")
+      draggedItem.dataset.tier = "true"
     } else {
-      console.log("incorrect tier")
+      draggedItem.dataset.tier = ""
     }
+
+    draggableItems.forEach((draggableItem, index) => {
+      const rankValue = draggableItem.dataset.rank
+      const indexValue = index.toString()
+
+      console.log(rankValue, indexValue)
+
+      if (
+        rankValue === indexValue &&
+        container.id === draggedItem.classList[1]
+      ) {
+        draggableItem.dataset.order = "true"
+      } else {
+        draggableItem.dataset.order = ""
+      }
+    })
   })
 })
 
@@ -80,3 +99,37 @@ function sortDraggableElements(container, x) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element
 }
+//   if (
+//     (previousDraggable &&
+//       parseInt(previousDraggable.dataset.rank) > rankNumber) ||
+//     (nextDraggable && parseInt(nextDraggable.dataset.rank) < rankNumber)
+//   ) {
+//     console.log("correct tier, incorrect order")
+//     if (!draggedItem.dataset.scored) {
+//       score += 1
+//       draggedItem.dataset.scored = "1"
+//     } else if (draggedItem.dataset.scored === "2") {
+//       score -= 2
+//       draggedItem.dataset.scored = "1"
+//     }
+//   } else {
+//     console.log("correct tier, correct order")
+//     if (!draggedItem.dataset.scored) {
+//       score += 2
+//       draggedItem.dataset.scored = "2"
+//     } else if (draggedItem.dataset.scored === "1") {
+//       score += 1
+//       draggedItem.dataset.scored = "2"
+//     }
+//   }
+// } else {
+//   console.log("incorrect tier")
+//   if (draggedItem.dataset.scored) {
+//     if (draggedItem.dataset.scored === "1") {
+//       score -= 1
+//     } else if (draggedItem.dataset.scored === "2") {
+//       score -= 2
+//     }
+//     draggedItem.dataset.scored = ""
+//   }
+// }
