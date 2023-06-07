@@ -6,8 +6,45 @@ const criteriaList = document.querySelector(".criteria-list")
 const scoringSystem = document.querySelector(".scoring-system")
 const scoreDisplay = document.querySelector(".score")
 
-let score = 0
 const pointsPossible = draggables.length * 2
+
+//scoring logic
+function calculateTotalScore() {
+  const draggableItems = Array.from(document.querySelectorAll(".draggable"))
+  let score = 0
+
+  draggableItems.forEach(draggableItem => {
+    const itemScore = parseInt(draggableItem.dataset.score)
+    score += itemScore
+  })
+  return score
+}
+
+let activityValue = 1
+
+// function updateActivityValue() {
+//   const draggableItems = Array.from(document.querySelectorAll(".draggable"))
+//   draggableItems.forEach(draggableItem => {
+//     if (draggableItem.classList.contains("dragging")) {
+//       draggableItem.dataset.activity = activityValue.toString()
+//       activityValue++
+//     }
+//   })
+// }
+
+// function highestActivityValue() {
+//   const draggables = Array.from(document.querySelectorAll(".draggable"))
+//   let maxActivityValue = 0
+
+//   draggables.forEach(draggable => {
+//     const activityValue = parseInt(draggable.dataset.activity)
+
+//     if (activityValue > maxActivityValue) {
+//       maxActivityValue = activityValue
+//     }
+//   })
+//   console.log("Highest activity value:", maxActivityValue)
+// }
 
 //button logic
 criteriaButton.addEventListener("click", e => {
@@ -42,41 +79,42 @@ containers.forEach(container => {
       container.insertBefore(draggable, afterElement)
     }
   })
-  // sorting and scoring logic
+
+  // sortinglogic
+
   container.addEventListener("drop", e => {
     e.preventDefault()
-    const draggedItemType = e.dataTransfer.getData("text/plain")
-    const draggedItem = document.querySelector(`.${draggedItemType}`)
+
     const draggableItems = Array.from(container.querySelectorAll(".draggable"))
-    // const rankValue = draggedItem.dataset.rank
-    // const rankNumber = parseInt(rankValue)
-
-    const index = draggableItems.findIndex(item => item === draggedItem)
-    const previousDraggable = draggableItems[index - 1]
-    const nextDraggable = draggableItems[index + 1]
-
-    if (container.id === draggedItem.classList[1]) {
-      console.log("correct tier")
-      draggedItem.dataset.tier = "true"
-    } else {
-      draggedItem.dataset.tier = ""
-    }
 
     draggableItems.forEach((draggableItem, index) => {
       const rankValue = draggableItem.dataset.rank
       const indexValue = index.toString()
 
-      console.log(rankValue, indexValue)
-
       if (
-        rankValue === indexValue &&
-        container.id === draggedItem.classList[1]
+        indexValue === rankValue &&
+        container.id === draggableItem.classList[1]
       ) {
         draggableItem.dataset.order = "true"
+        draggableItem.dataset.tier = "true"
+        draggableItem.dataset.score = 2
+      } else if (
+        indexValue != rankValue &&
+        container.id === draggableItem.classList[1]
+      ) {
+        draggableItem.dataset.order = ""
+        draggableItem.dataset.tier = "true"
+        draggableItem.dataset.score = 1
       } else {
         draggableItem.dataset.order = ""
+        draggableItem.dataset.tier = ""
+        draggableItem.dataset.score = 0
       }
     })
+
+    //call scoring function
+    const runningTotal = calculateTotalScore()
+    console.log("total score: ", runningTotal)
   })
 })
 
@@ -99,37 +137,3 @@ function sortDraggableElements(container, x) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element
 }
-//   if (
-//     (previousDraggable &&
-//       parseInt(previousDraggable.dataset.rank) > rankNumber) ||
-//     (nextDraggable && parseInt(nextDraggable.dataset.rank) < rankNumber)
-//   ) {
-//     console.log("correct tier, incorrect order")
-//     if (!draggedItem.dataset.scored) {
-//       score += 1
-//       draggedItem.dataset.scored = "1"
-//     } else if (draggedItem.dataset.scored === "2") {
-//       score -= 2
-//       draggedItem.dataset.scored = "1"
-//     }
-//   } else {
-//     console.log("correct tier, correct order")
-//     if (!draggedItem.dataset.scored) {
-//       score += 2
-//       draggedItem.dataset.scored = "2"
-//     } else if (draggedItem.dataset.scored === "1") {
-//       score += 1
-//       draggedItem.dataset.scored = "2"
-//     }
-//   }
-// } else {
-//   console.log("incorrect tier")
-//   if (draggedItem.dataset.scored) {
-//     if (draggedItem.dataset.scored === "1") {
-//       score -= 1
-//     } else if (draggedItem.dataset.scored === "2") {
-//       score -= 2
-//     }
-//     draggedItem.dataset.scored = ""
-//   }
-// }
