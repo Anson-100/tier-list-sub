@@ -20,7 +20,7 @@ function calculateTotalScore() {
   return score
 }
 
-let activityValue = 1
+// let activityValue = 1
 
 // function updateActivityValue() {
 //   const draggableItems = Array.from(document.querySelectorAll(".draggable"))
@@ -61,10 +61,12 @@ draggables.forEach(draggable => {
     const itemId = draggable.classList[1]
     e.dataTransfer.setData("text/plain", itemId)
     draggable.classList.add("dragging")
+    draggable.classList.remove("dropped")
   })
 
   draggable.addEventListener("dragend", e => {
     draggable.classList.remove("dragging")
+    draggable.classList.add("dropped")
   })
 })
 
@@ -79,12 +81,8 @@ containers.forEach(container => {
       container.insertBefore(draggable, afterElement)
     }
   })
-
   // sortinglogic
-
-  container.addEventListener("drop", e => {
-    e.preventDefault()
-
+  function pointAssignment(container) {
     const draggableItems = Array.from(container.querySelectorAll(".draggable"))
 
     draggableItems.forEach((draggableItem, index) => {
@@ -111,7 +109,11 @@ containers.forEach(container => {
         draggableItem.dataset.score = 0
       }
     })
+  }
 
+  container.addEventListener("drop", e => {
+    e.preventDefault()
+    pointAssignment(container)
     //call scoring function
     const runningTotal = calculateTotalScore()
     console.log("total score: ", runningTotal)
@@ -137,3 +139,9 @@ function sortDraggableElements(container, x) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element
 }
+
+// container.addEventListener("dragstart", e => {
+//   const draggableItems = Array.from(container.querySelectorAll(".dropped"))
+
+//   console.log(draggableItems)
+// })
