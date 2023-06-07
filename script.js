@@ -20,7 +20,7 @@ function calculateTotalScore() {
   return score
 }
 
-// let activityValue = 1
+let activityValue = 1
 
 // function updateActivityValue() {
 //   const draggableItems = Array.from(document.querySelectorAll(".draggable"))
@@ -61,12 +61,10 @@ draggables.forEach(draggable => {
     const itemId = draggable.classList[1]
     e.dataTransfer.setData("text/plain", itemId)
     draggable.classList.add("dragging")
-    draggable.classList.remove("dropped")
   })
 
   draggable.addEventListener("dragend", e => {
     draggable.classList.remove("dragging")
-    draggable.classList.add("dropped")
   })
 })
 
@@ -81,8 +79,12 @@ containers.forEach(container => {
       container.insertBefore(draggable, afterElement)
     }
   })
+
   // sortinglogic
-  function pointAssignment(container) {
+
+  container.addEventListener("drop", e => {
+    e.preventDefault()
+
     const draggableItems = Array.from(container.querySelectorAll(".draggable"))
 
     draggableItems.forEach((draggableItem, index) => {
@@ -93,9 +95,19 @@ containers.forEach(container => {
         indexValue === rankValue &&
         container.id === draggableItem.classList[1]
       ) {
-        draggableItem.dataset.order = "true"
-        draggableItem.dataset.tier = "true"
-        draggableItem.dataset.score = 2
+        if (
+          index > 0 &&
+          draggableItems[index - 1].dataset.order !== "true" &&
+          draggableItem.dataset.order === "true"
+        ) {
+          draggableItem.dataset.order = ""
+          draggableItem.dataset.tier = "true"
+          draggableItem.dataset.score = 1
+        } else {
+          draggableItem.dataset.order = "true"
+          draggableItem.dataset.tier = "true"
+          draggableItem.dataset.score = 2
+        }
       } else if (
         indexValue != rankValue &&
         container.id === draggableItem.classList[1]
@@ -109,11 +121,48 @@ containers.forEach(container => {
         draggableItem.dataset.score = 0
       }
     })
-  }
 
-  container.addEventListener("drop", e => {
-    e.preventDefault()
-    pointAssignment(container)
+    containers.forEach(container => {
+      const draggableItems = Array.from(
+        container.querySelectorAll(".draggable")
+      )
+
+      draggableItems.forEach((draggableItem, index) => {
+        const rankValue = draggableItem.dataset.rank
+        const indexValue = index.toString()
+
+        if (
+          indexValue === rankValue &&
+          container.id === draggableItem.classList[1]
+        ) {
+          if (
+            index > 0 &&
+            draggableItems[index - 1].dataset.order !== "true" &&
+            draggableItem.dataset.order === "true"
+          ) {
+            draggableItem.dataset.order = ""
+            draggableItem.dataset.tier = "true"
+            draggableItem.dataset.score = 1
+          } else {
+            draggableItem.dataset.order = "true"
+            draggableItem.dataset.tier = "true"
+            draggableItem.dataset.score = 2
+          }
+        } else if (
+          indexValue != rankValue &&
+          container.id === draggableItem.classList[1]
+        ) {
+          draggableItem.dataset.order = ""
+          draggableItem.dataset.tier = "true"
+          draggableItem.dataset.score = 1
+        } else {
+          draggableItem.dataset.order = ""
+          draggableItem.dataset.tier = ""
+          draggableItem.dataset.score = 0
+        }
+      })
+    })
+
     //call scoring function
     const runningTotal = calculateTotalScore()
     console.log("total score: ", runningTotal)
@@ -139,9 +188,3 @@ function sortDraggableElements(container, x) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element
 }
-
-// container.addEventListener("dragstart", e => {
-//   const draggableItems = Array.from(container.querySelectorAll(".dropped"))
-
-//   console.log(draggableItems)
-// })
