@@ -4,6 +4,7 @@ const containers = document.querySelectorAll(".container")
 const criteriaModal = document.querySelector(".criteria-modal")
 const scoringModal = document.querySelector(".scoring-modal")
 const scoreDisplay = document.querySelector(".score")
+const allModals = document.querySelectorAll("dialog")
 
 const criteriaButton = document.querySelector(".criteria-button")
 const scoringButton = document.querySelector(".scoring-button")
@@ -38,12 +39,22 @@ scoringButton.addEventListener("click", e => {
   scoringModal.showModal()
 })
 
-closeCriteriaModal.addEventListener("click", e => {
-  criteriaModal.close()
+closeCriteriaModal.addEventListener("click", () => {
+  criteriaModal.classList.add("hide")
+  criteriaModal.addEventListener("animationend", function hideDialog() {
+    criteriaModal.classList.remove("hide")
+    criteriaModal.close()
+    criteriaModal.removeEventListener("animationend", hideDialog)
+  })
 })
 
-closeScoringModal.addEventListener("click", e => {
-  scoringModal.close()
+closeScoringModal.addEventListener("click", () => {
+  scoringModal.classList.add("hide")
+  scoringModal.addEventListener("animationend", function hideDialog() {
+    scoringModal.classList.remove("hide")
+    scoringModal.close()
+    scoringModal.removeEventListener("animationend", hideDialog)
+  })
 })
 
 function submitButtonGraphics() {

@@ -13,6 +13,12 @@ button:hover {
   cursor: pointer;
 }
 
+:root {
+  --light-gray: rgb(192, 192, 192);
+  --mid-gray: gray;
+  --dark-gray: rgb(57, 57, 57);
+}
+
 body {
   background-color: black;
   min-height: 100vh;
@@ -81,7 +87,7 @@ h1 {
   background-color: red;
 }
 
-/* draggable container/items styling */
+/* draggable container/items styling -----------------------------------------*/
 .draggable {
   font-size: 1.4rem;
   margin: 0.2rem;
@@ -91,10 +97,11 @@ h1 {
   border: 2px solid black;
   cursor: move;
   transition: transform 0.2s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .draggables {
-  background-color: gray;
+  background-color: var(--mid-gray);
   flex: 1;
 }
 
@@ -106,7 +113,7 @@ h1 {
 /* div styling */
 .top {
   padding: 9px;
-  background-color: rgb(57, 57, 57);
+  background-color: var(--dark-gray);
 }
 
 .description {
@@ -116,40 +123,70 @@ h1 {
 }
 
 .instructions {
-  background-color: gray;
+  background-color: var(--mid-gray);
   display: inline-block;
   border-radius: 5px;
   padding: 5px;
 }
 .submit-area {
   text-align: center;
-  background-color: gray;
+  background-color: var(--mid-gray);
 }
 
-/*list styling */
-
-.scoring-modal,
-.criteria-modal {
-  position: fixed;
+/*modal styling ------------------------------------------------------*/
+dialog {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  border: 0px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.671);
+  background-color: var(--mid-gray);
 }
 
-.button-stuff {
-  text-align: center;
+dialog[open] {
+  animation: show 0.3s ease normal;
+}
+
+@keyframes show {
+  from {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+dialog.hide {
+  animation: hide 0.3s ease normal;
+}
+
+@keyframes hide {
+  to {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.51);
 }
 
 .criteria-list,
 .scoring-list {
   list-style: none;
-  background-color: rgb(255, 255, 255);
   margin: 0.3rem;
   border-radius: 5px;
   color: rgb(0, 0, 0);
   padding: 10px;
   font-size: 20px;
+}
+
+li {
+  color: rgb(0, 0, 0);
 }
 
 .criteria-list {
@@ -161,11 +198,22 @@ h1 {
   font-size: 25px;
 }
 
-.note {
-  color: rgb(71, 162, 67);
+.scoring-system {
+  color: rgb(226, 226, 226);
+  font-size: 1.4rem;
+  background-color: rgb(70, 70, 70);
+  padding: 0.5rem;
 }
 
-/* button styling */
+/* button styling ----------------------------------------------------------*/
+button {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.button-stuff {
+  text-align: center;
+}
+
 .criteria-button,
 .scoring-button {
   border: 2px solid rgb(82, 82, 82);
@@ -173,15 +221,16 @@ h1 {
   font-size: 1.3rem;
   padding: 0 0.5rem 0 0.5rem;
   background-color: rgb(97, 97, 97);
-  color: rgb(182, 182, 182);
+  color: rgb(198, 198, 198);
   transition: all 0.2s ease;
 }
 
 .criteria-button:hover,
-.scoring-button:hover {
-  border: 2px solid rgb(255, 255, 255);
-  background-color: black;
-  color: white;
+.scoring-button:hover,
+.submit-button:hover {
+  border: 2px solid rgb(227, 227, 227);
+  background-color: rgb(48, 48, 48);
+  color: rgb(236, 236, 236);
 }
 
 .close-criteria,
@@ -194,6 +243,7 @@ h1 {
   color: rgb(255, 255, 255);
   border: 2px solid rgb(235, 235, 235);
   transition: all 0.2s ease;
+  box-shadow: none;
 }
 
 .close-criteria:hover,
@@ -205,19 +255,14 @@ h1 {
 
 .submit-button {
   margin: 0.5rem;
-  border: 2px solid rgb(150, 150, 150);
+  border: 2px solid rgb(136, 136, 136);
   border-radius: 5px;
   font-size: 1.3rem;
   padding: 0 0.5rem 0 0.5rem;
-  background-color: rgb(138, 138, 138);
-  color: rgb(161, 161, 161);
+  background-color: rgb(131, 131, 131);
+  color: rgb(139, 139, 139);
   transition: all 0.2s ease;
-}
-
-.submit-button:hover {
-  border: 2px solid rgb(255, 255, 255);
-  background-color: black;
-  color: white;
+  box-shadow: none;
 }
 
 .submit-button.animate {
@@ -228,6 +273,7 @@ h1 {
   padding: 0 0.5rem 0 0.5rem;
   background-color: rgba(0, 255, 255, 0.53);
   color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .submit-button.animate:hover {
@@ -238,7 +284,7 @@ h1 {
   color: rgb(255, 255, 255);
 }
 
-/* footer styling */
+/* footer styling --------------------------------------------------------*/
 footer {
   color: white;
   text-align: center;
