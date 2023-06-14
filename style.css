@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap");
 
 * {
   /*accounts for border or padding values when you specify an element's width and height*/
@@ -6,6 +7,10 @@
   margin: 0;
   padding: 0;
   font-family: "Source Sans Pro", sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 body {
@@ -78,7 +83,7 @@ h1 {
 
 /* draggable container/items styling */
 .draggable {
-  font-size: 2rem;
+  font-size: 1.4rem;
   margin: 0.2rem;
   padding: 0.2rem;
   background-color: aliceblue;
@@ -98,7 +103,12 @@ h1 {
   transform: scale(1.1);
 }
 
-/* criteria button and list styling */
+/* div styling */
+.top {
+  padding: 9px;
+  background-color: rgb(57, 57, 57);
+}
+
 .description {
   text-align: center;
   font-size: 1.5rem;
@@ -111,68 +121,121 @@ h1 {
   border-radius: 5px;
   padding: 5px;
 }
-
-.scoring-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.submit-area {
+  text-align: center;
+  background-color: gray;
 }
 
-.top {
-  padding: 9px;
-  background-color: rgb(57, 57, 57);
+/*list styling */
+
+.scoring-modal,
+.criteria-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
+
 .button-stuff {
   text-align: center;
 }
 
-.list-stuff {
-  text-align: center;
-}
-
-.criteria-button,
-.scoring-button {
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: 5px;
-  font-size: 1.3rem;
-  padding: 0 0.5rem 0 0.5rem;
-  background-color: black;
-  color: white;
-}
-
-.scoring-button {
-  width: 5rem;
-  margin: 0.3rem;
-}
-
-.criteria-button:hover,
-.scoring-button:hover {
-  background-color: rgb(62, 58, 80);
-  cursor: pointer;
-}
-
 .criteria-list,
-.scoring-system {
-  display: none;
+.scoring-list {
   list-style: none;
-  background-color: gray;
+  background-color: rgb(255, 255, 255);
   margin: 0.3rem;
   border-radius: 5px;
   color: rgb(0, 0, 0);
   padding: 10px;
+  font-size: 20px;
 }
 
-.scoring-system {
-  background-color: rgb(220, 220, 220);
+.criteria-list {
+  text-align: left;
 }
 
-.criteria-list.show,
-.scoring-system.show {
-  display: inline-block;
+.criteria-words {
+  color: rgb(255, 174, 0);
+  font-size: 25px;
 }
 
 .note {
   color: rgb(71, 162, 67);
+}
+
+/* button styling */
+.criteria-button,
+.scoring-button {
+  border: 2px solid rgb(82, 82, 82);
+  border-radius: 5px;
+  font-size: 1.3rem;
+  padding: 0 0.5rem 0 0.5rem;
+  background-color: rgb(97, 97, 97);
+  color: rgb(182, 182, 182);
+  transition: all 0.2s ease;
+}
+
+.criteria-button:hover,
+.scoring-button:hover {
+  border: 2px solid rgb(255, 255, 255);
+  background-color: black;
+  color: white;
+}
+
+.close-criteria,
+.close-scoring {
+  border-radius: 5px;
+  font-size: 1.3rem;
+  padding: 0 0.5rem 0 0.5rem;
+  margin: 0.5rem;
+  background-color: rgb(216, 216, 216);
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(235, 235, 235);
+  transition: all 0.2s ease;
+}
+
+.close-criteria:hover,
+.close-scoring:hover {
+  background-color: rgb(94, 94, 94);
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(222, 222, 222);
+}
+
+.submit-button {
+  margin: 0.5rem;
+  border: 2px solid rgb(150, 150, 150);
+  border-radius: 5px;
+  font-size: 1.3rem;
+  padding: 0 0.5rem 0 0.5rem;
+  background-color: rgb(138, 138, 138);
+  color: rgb(161, 161, 161);
+  transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+  border: 2px solid rgb(255, 255, 255);
+  background-color: black;
+  color: white;
+}
+
+.submit-button.animate {
+  margin: 0.5rem;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  font-size: 1.4rem;
+  padding: 0 0.5rem 0 0.5rem;
+  background-color: rgba(0, 255, 255, 0.53);
+  color: rgb(255, 255, 255);
+}
+
+.submit-button.animate:hover {
+  margin: 0.5rem;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  background-color: rgb(0, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 /* footer styling */

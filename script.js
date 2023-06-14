@@ -1,10 +1,15 @@
 const draggables = document.querySelectorAll(".draggable")
+const draggableArea = document.getElementById("bank")
 const containers = document.querySelectorAll(".container")
+const criteriaModal = document.querySelector(".criteria-modal")
+const scoringModal = document.querySelector(".scoring-modal")
+const scoreDisplay = document.querySelector(".score")
+
 const criteriaButton = document.querySelector(".criteria-button")
 const scoringButton = document.querySelector(".scoring-button")
-const criteriaList = document.querySelector(".criteria-list")
-const scoringSystem = document.querySelector(".scoring-system")
-const scoreDisplay = document.querySelector(".score")
+const submitButton = document.querySelector(".submit-button")
+const closeCriteriaModal = document.querySelector(".close-criteria")
+const closeScoringModal = document.querySelector(".close-scoring")
 
 const pointsPossible = draggables.length * 2
 
@@ -17,44 +22,41 @@ function calculateTotalScore() {
     const itemScore = parseInt(draggableItem.dataset.score)
     score += itemScore
   })
-  return score
+
+  if (score === pointsPossible) {
+    console.log("perfect")
+  }
+  return `${score}/${pointsPossible}`
 }
-
-let activityValue = 1
-
-// function updateActivityValue() {
-//   const draggableItems = Array.from(document.querySelectorAll(".draggable"))
-//   draggableItems.forEach(draggableItem => {
-//     if (draggableItem.classList.contains("dragging")) {
-//       draggableItem.dataset.activity = activityValue.toString()
-//       activityValue++
-//     }
-//   })
-// }
-
-// function highestActivityValue() {
-//   const draggables = Array.from(document.querySelectorAll(".draggable"))
-//   let maxActivityValue = 0
-
-//   draggables.forEach(draggable => {
-//     const activityValue = parseInt(draggable.dataset.activity)
-
-//     if (activityValue > maxActivityValue) {
-//       maxActivityValue = activityValue
-//     }
-//   })
-//   console.log("Highest activity value:", maxActivityValue)
-// }
 
 //button logic
 criteriaButton.addEventListener("click", e => {
-  criteriaList.classList.toggle("show")
+  criteriaModal.showModal()
 })
 
 scoringButton.addEventListener("click", e => {
-  scoringSystem.classList.toggle("show")
+  scoringModal.showModal()
 })
 
+closeCriteriaModal.addEventListener("click", e => {
+  criteriaModal.close()
+})
+
+closeScoringModal.addEventListener("click", e => {
+  scoringModal.close()
+})
+
+function submitButtonGraphics() {
+  const draggableItems = draggableArea.querySelectorAll(".draggable")
+
+  if (draggableItems.length === 0) {
+    submitButton.classList.add("animate")
+  } else {
+    submitButton.classList.remove("animate")
+  }
+
+  console.log(draggableItems.length)
+}
 //drag and drop logic
 draggables.forEach(draggable => {
   draggable.addEventListener("dragstart", e => {
@@ -68,6 +70,19 @@ draggables.forEach(draggable => {
   })
 })
 
+function submitButtonGraphics() {
+  const draggableItems = draggableArea.querySelectorAll(".draggable")
+
+  if (draggableItems.length === 0) {
+    submitButton.classList.add("animate")
+  } else {
+    submitButton.classList.remove("animate")
+  }
+
+  console.log(draggableItems.length)
+}
+
+// sortinglogic
 containers.forEach(container => {
   container.addEventListener("dragover", e => {
     e.preventDefault()
@@ -79,8 +94,6 @@ containers.forEach(container => {
       container.insertBefore(draggable, afterElement)
     }
   })
-
-  // sortinglogic
 
   container.addEventListener("drop", e => {
     e.preventDefault()
@@ -162,6 +175,9 @@ containers.forEach(container => {
         }
       })
     })
+    submitButtonGraphics()
+    // call attempt count
+    // updateActivityValue()
 
     //call scoring function
     const runningTotal = calculateTotalScore()
@@ -188,3 +204,30 @@ function sortDraggableElements(container, x) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element
 }
+
+// let activityValue = 0
+
+// function updateActivityValue() {
+//   const draggableItems = Array.from(document.querySelectorAll(".draggable"))
+//   draggableItems.forEach(draggableItem => {
+//     if (draggableItem.classList.contains("dragging")) {
+//       draggableItem.dataset.activity = activityValue.toString()
+//       activityValue++
+//     }
+//   })
+//   console.log(activityValue)
+// }
+
+// function highestActivityValue() {
+//   const draggables = Array.from(document.querySelectorAll(".draggable"))
+//   let maxActivityValue = 0
+
+//   draggables.forEach(draggable => {
+//     const activityValue = parseInt(draggable.dataset.activity)
+
+//     if (activityValue > maxActivityValue) {
+//       maxActivityValue = activityValue
+//     }
+//   })
+//   console.log("Highest activity value:", maxActivityValue)
+// }
