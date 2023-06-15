@@ -4,7 +4,6 @@ const containers = document.querySelectorAll(".container")
 const criteriaModal = document.querySelector(".criteria-modal")
 const scoringModal = document.querySelector(".scoring-modal")
 const scoreDisplay = document.querySelector(".score")
-const allModals = document.querySelectorAll("dialog")
 
 const criteriaButton = document.querySelector(".criteria-button")
 const scoringButton = document.querySelector(".scoring-button")
@@ -14,7 +13,7 @@ const closeScoringModal = document.querySelector(".close-scoring")
 
 const pointsPossible = draggables.length * 2
 
-//scoring logic
+//scoring logic------------------------------------------------------------
 function calculateTotalScore() {
   const draggableItems = Array.from(document.querySelectorAll(".draggable"))
   let score = 0
@@ -30,7 +29,7 @@ function calculateTotalScore() {
   return `${score}/${pointsPossible}`
 }
 
-//button logic
+//button logic---------------------------------------------------------
 criteriaButton.addEventListener("click", e => {
   criteriaModal.showModal()
 })
@@ -58,17 +57,17 @@ closeScoringModal.addEventListener("click", () => {
 })
 
 function submitButtonGraphics() {
-  const draggableItems = draggableArea.querySelectorAll(".draggable")
-
-  if (draggableItems.length === 0) {
+  const unplacedItems = draggableArea.querySelectorAll(".draggable")
+  if (unplacedItems.length === 0) {
     submitButton.classList.add("animate")
   } else {
     submitButton.classList.remove("animate")
   }
 
-  console.log(draggableItems.length)
+  console.log(unplacedItems.length)
 }
-//drag and drop logic
+
+//drag and drop logic -------------------------------------------------------------
 draggables.forEach(draggable => {
   draggable.addEventListener("dragstart", e => {
     const itemId = draggable.classList[1]
@@ -81,19 +80,7 @@ draggables.forEach(draggable => {
   })
 })
 
-function submitButtonGraphics() {
-  const draggableItems = draggableArea.querySelectorAll(".draggable")
-
-  if (draggableItems.length === 0) {
-    submitButton.classList.add("animate")
-  } else {
-    submitButton.classList.remove("animate")
-  }
-
-  console.log(draggableItems.length)
-}
-
-// sortinglogic
+// sortinglogic-------------------------------------------------------------------
 containers.forEach(container => {
   container.addEventListener("dragover", e => {
     e.preventDefault()
@@ -215,6 +202,8 @@ function sortDraggableElements(container, x) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element
 }
+
+export { submitButton, calculateTotalScore, draggableArea }
 
 // let activityValue = 0
 

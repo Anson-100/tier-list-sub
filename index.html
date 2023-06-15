@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js" defer></script>
+    <script type="module" src="results.js" defer></script>
   </head>
   <body>
     <!-- tier list -->
@@ -79,13 +80,26 @@
         </div>
         <ul class="scoring-list">
           <li>1 point for placing it in the correct tier</li>
+          <li>1 point for placing it in the correct order within that tier</li>
+          <br />
+          <li>click the "submit" button to see results</li>
+          <br />
           <li>
-            1 point for placing it in the correct order within that tier(BEST
+            <span class="two-points">GREEN</span>
+            =correct tier, correct order(2pts)
+          </li>
+          <li>
+            <span class="one-point">YELLOW</span>
+            =correct tier, wrong order(1pt)
+          </li>
+          <li>
+            <span class="zero-points">RED</span>
+            =wrong everything(0pts)
           </li>
         </ul>
         <button class="close-scoring">close</button>
       </dialog>
-
+      <!-- draggable items -->
       <div class="container draggables" id="bank">
         <p
           class="draggable S"
@@ -213,22 +227,12 @@
         <button class="submit-button">submit</button>
       </div>
     </div>
-
+    <!-- footer -->
     <footer id="footer">Anson Hunnell 2023</footer>
   </body>
 </html>
 
-<!-- <p class="draggable" draggable="true">ankle lock</p>
-          <p class="draggable" draggable="true">armbar</p>
-          <p class="draggable S one" draggable="true">rnc</p>
-          <p class="draggable" draggable="true">bicep slicer</p>
-          <p class="draggable" draggable="true">triangle</p>
-          <p class="draggable" draggable="true">guillotine</p>
-          <p class="draggable" draggable="true">d'arce</p>
-          <p class="draggable" draggable="true">calf slicer</p>
-          <p class="draggable" draggable="true">anaconda</p>
-          <p class="draggable S two" draggable="true">heel hook</p>
-          <p class="draggable" draggable="true">wrist lock</p>
+<!--    <p class="draggable" draggable="true">wrist lock</p>
           <p class="draggable" draggable="true">toe hold</p>
           <p class="draggable" draggable="true">neck crank</p>
           <p class="draggable" draggable="true">twister</p>
