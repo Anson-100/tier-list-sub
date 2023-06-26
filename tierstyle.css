@@ -1,0 +1,80 @@
+.tooltip-text {
+  display: none;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  max-width: 300px;
+  background-color: rgb(213, 219, 172);
+  color: #000000;
+
+  padding: 3px;
+  position: absolute;
+  border: solid black 1px;
+  z-index: 2;
+
+  transition: opacity 8s;
+}
+
+h1:hover {
+  cursor: help;
+}
+
+#s-tier:hover .tooltip-text {
+  opacity: 0.9;
+  display: inline-block;
+}
+
+#a-tier:hover .tooltip-text {
+  opacity: 0.9;
+  display: inline-block;
+}
+
+#b-tier:hover .tooltip-text {
+  opacity: 0.9;
+  display: inline-block;
+}
+
+#c-tier:hover .tooltip-text {
+  opacity: 0.9;
+  display: inline-block;
+}
+
+#d-tier:hover .tooltip-text {
+  opacity: 0.9;
+  display: inline-block;
+}
+
+#f-tier:hover .tooltip-text {
+  opacity: 0.9;
+  display: inline-block;
+}
+
+/* results styling ----------------------------------------------------
+--------------------------------------------------------------------
+------------------------------------------------------------------
+---------------------------------------------------------------------- */
+.check-results {
+  transition: all 0.2s ease;
+}
+
+.check-results:hover {
+  box-shadow: 0 0 9px 0 rgb(155, 155, 155);
+}
+
+.stripes.show {
+  display: flex;
+  height: 100%;
+}
+
+.black.show,
+.stripe.show {
+  background-color: black;
+}
+
+.black.show {
+  width: 1rem;
+}
+
+.stripe.show {
+  width: 0.5rem;
+}

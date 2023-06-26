@@ -3,7 +3,6 @@ const draggableArea = document.getElementById("bank")
 const containers = document.querySelectorAll(".container")
 const criteriaModal = document.querySelector(".criteria-modal")
 const scoringModal = document.querySelector(".scoring-modal")
-const scoreDisplay = document.querySelector(".score")
 
 const criteriaButton = document.querySelector(".criteria-button")
 const scoringButton = document.querySelector(".scoring-button")
@@ -23,9 +22,9 @@ function calculateTotalScore() {
     score += itemScore
   })
 
-  if (score === pointsPossible) {
-    console.log("perfect")
-  }
+  // if (score === pointsPossible) {
+  //   console.log("perfect")
+  // }
   return `${score}/${pointsPossible}`
 }
 
@@ -101,6 +100,14 @@ containers.forEach(container => {
     draggableItems.forEach((draggableItem, index) => {
       const rankValue = draggableItem.dataset.rank
       const indexValue = index.toString()
+
+      if (container.id != "bank") {
+        draggableItem.classList.remove("unplaced")
+        draggableItem.classList.add("placed")
+      } else {
+        draggableItem.classList.remove("placed")
+        draggableItem.classList.add("unplaced")
+      }
 
       if (
         indexValue === rankValue &&
@@ -203,7 +210,14 @@ function sortDraggableElements(container, x) {
   ).element
 }
 
-export { submitButton, calculateTotalScore, draggableArea }
+export {
+  draggables,
+  containers,
+  submitButton,
+  calculateTotalScore,
+  draggableArea,
+  pointsPossible,
+}
 
 // let activityValue = 0
 
@@ -229,5 +243,5 @@ export { submitButton, calculateTotalScore, draggableArea }
 //       maxActivityValue = activityValue
 //     }
 //   })
-//   console.log("Highest activity value:", maxActivityValue)
+//   return maxActivityValue
 // }

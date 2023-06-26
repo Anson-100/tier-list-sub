@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="tierstyle.css" />
     <script type="module" src="script.js" defer></script>
     <script type="module" src="results.js" defer></script>
   </head>
@@ -14,42 +15,92 @@
     <div class="content">
       <div class="tier-list">
         <div class="tier">
-          <h1 id="s-tier">S</h1>
-          <div class="container rank" id="S">&nbsp;</div>
+          <h1 id="s-tier">
+            S<span class="tooltip-text" id="fade"
+              >Look at the criteria list. Based on these attributes, which
+              submissions have the most maxed out stats? These are the
+              techniques that belong in S-tier and every grappler should seek to
+              become proficient in their use.</span
+            >
+          </h1>
+
+          <div class="container rank 1" id="S">&nbsp;</div>
         </div>
         <div class="tier">
-          <h1 id="a-tier">A</h1>
-          <div class="container rank" id="A">&nbsp;</div>
+          <h1 id="a-tier">
+            A<span class="tooltip-text">
+              A-tier submissions are highly effective and viable but usually
+              have a slight drawback or limitation that keeps them out of
+              S-tier.
+            </span>
+          </h1>
+          <div class="container rank 2" id="A">&nbsp;</div>
         </div>
         <div class="tier">
-          <h1 id="b-tier">B</h1>
-          <div class="container rank" id="B">&nbsp;</div>
+          <h1 id="b-tier">
+            B
+            <span class="tooltip-text">
+              B-tier submissions are solid techniques however they are usually
+              better-suited for competition use. They may not be the best option
+              for neutralizing an opponent in a street encounter
+            </span>
+          </h1>
+          <div class="container rank 3" id="B">&nbsp;</div>
         </div>
         <div class="tier">
-          <h1 id="c-tier">C</h1>
-          <div class="container rank" id="C">&nbsp;</div>
+          <h1 id="c-tier">
+            C
+            <span class="tooltip-text">
+              C-tier is the place for lower percentage moves. Some people may
+              specialize in their use and have a lot of success with them but
+              this is the exception rather than the rule.
+            </span>
+          </h1>
+          <div class="container rank 4" id="C">&nbsp;</div>
         </div>
         <div class="tier">
-          <h1 id="d-tier">D</h1>
-          <div class="container rank" id="D">&nbsp;</div>
+          <h1 id="d-tier">
+            D
+            <span class="tooltip-text"
+              >These are very low percentage moves that people may pull off
+              every now and then due to a rare opportunity. Learn D-tier
+              submissions for fun but making them the cornerstone of your game
+              is not recommended.</span
+            >
+          </h1>
+          <div class="container rank 5" id="D">&nbsp;</div>
         </div>
         <div class="tier">
-          <h1 id="f-tier">F</h1>
-          <div class="container rank" id="F">&nbsp;</div>
+          <h1 id="f-tier">
+            F
+            <span class="tooltip-text"> These moves are trash. </span>
+          </h1>
+          <div class="container rank 6" id="F">&nbsp;</div>
         </div>
       </div>
 
       <div class="top">
-        <div class="description">
-          <p class="instructions">rank the following submissions:</p>
-        </div>
+        <div class="click-count"></div>
         <div class="button-stuff">
           <button class="criteria-button">criteria</button>
           <button class="scoring-button">scoring</button>
         </div>
+        <div class="stripes">
+          <div class="score-box"><div class="scoring-display"></div></div>
+          <div class="black belt-end"></div>
+          <div class="stripe stripe-one belt-end"></div>
+          <div class="black belt-end"></div>
+          <div class="stripe stripe-two belt-end"></div>
+          <div class="black belt-end"></div>
+          <div class="stripe stripe-three belt-end"></div>
+          <div class="black belt-end"></div>
+          <div class="stripe stripe-four belt-end"></div>
+          <div class="black belt-end"></div>
+        </div>
       </div>
       <!-- dialog boxes -->
       <dialog class="criteria-modal">
+        <div class="instructions">RANK THE FOLLOWING SUBMISSIONS BASED ON:</div>
         <ul class="criteria-list">
           <li>
             <p class="criteria-words">EFFECTIVENESS</p>
@@ -102,18 +153,7 @@
       <!-- draggable items -->
       <div class="container draggables" id="bank">
         <p
-          class="draggable S"
-          draggable="true"
-          data-rank="0"
-          data-tier=""
-          data-order=""
-          data-score="0"
-          data-activity="0"
-        >
-          🦁rnc
-        </p>
-        <p
-          class="draggable A dropped"
+          class="draggable A 2 unplaced"
           draggable="true"
           data-rank="1"
           data-tier=""
@@ -124,7 +164,7 @@
           🔺triangle
         </p>
         <p
-          class="draggable B dropped"
+          class="draggable B 3 unplaced"
           draggable="true"
           data-rank="2"
           data-tier=""
@@ -135,7 +175,7 @@
           🔻arm triangle
         </p>
         <p
-          class="draggable A dropped"
+          class="draggable A 2 unplaced"
           draggable="true"
           data-rank="0"
           data-tier=""
@@ -146,7 +186,7 @@
           😖guillotine
         </p>
         <p
-          class="draggable S dropped"
+          class="draggable S 1 unplaced"
           draggable="true"
           data-rank="1"
           data-tier=""
@@ -157,7 +197,7 @@
           😈heel hook
         </p>
         <p
-          class="draggable B dropped"
+          class="draggable B 3 unplaced"
           draggable="true"
           data-rank="1"
           data-tier=""
@@ -168,7 +208,18 @@
           💪armbar
         </p>
         <p
-          class="draggable C dropped"
+          class="draggable S 1 unplaced"
+          draggable="true"
+          data-rank="0"
+          data-tier=""
+          data-order=""
+          data-score="0"
+          data-activity="0"
+        >
+          🦁rnc
+        </p>
+        <p
+          class="draggable C 4 unplaced"
           draggable="true"
           data-rank="0"
           data-tier=""
@@ -178,8 +229,8 @@
         >
           🤗d'arce
         </p>
-        <p
-          class="draggable C dropped"
+        <!-- <p
+          class="draggable C 4 unplaced"
           draggable="true"
           data-rank="1"
           data-tier=""
@@ -190,7 +241,7 @@
           🐍anaconda
         </p>
         <p
-          class="draggable B dropped"
+          class="draggable B 3 unplaced"
           draggable="true"
           data-rank="0"
           data-tier=""
@@ -201,7 +252,7 @@
           🦍kimura
         </p>
         <p
-          class="draggable D dropped"
+          class="draggable D 5 unplaced"
           draggable="true"
           data-rank="0"
           data-tier=""
@@ -212,7 +263,7 @@
           🥨twister
         </p>
         <p
-          class="draggable F dropped"
+          class="draggable F 6 unplaced"
           draggable="true"
           data-rank="0"
           data-tier=""
@@ -221,12 +272,13 @@
           data-activity="0"
         >
           🎣fish hook
-        </p>
+        </p> -->
       </div>
       <div class="submit-area">
         <button class="submit-button">submit</button>
       </div>
     </div>
+    <div class="results-info"></div>
     <!-- footer -->
     <footer id="footer">Anson Hunnell 2023</footer>
   </body>
