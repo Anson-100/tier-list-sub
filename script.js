@@ -3,12 +3,14 @@ const draggableArea = document.getElementById("bank")
 const containers = document.querySelectorAll(".container")
 const criteriaModal = document.querySelector(".criteria-modal")
 const scoringModal = document.querySelector(".scoring-modal")
+const resultsModal = document.querySelector(".your-score")
 
 const criteriaButton = document.querySelector(".criteria-button")
 const scoringButton = document.querySelector(".scoring-button")
 const submitButton = document.querySelector(".submit-button")
 const closeCriteriaModal = document.querySelector(".close-criteria")
 const closeScoringModal = document.querySelector(".close-scoring")
+const closeResultsModal = document.querySelector(".close-results")
 
 const pointsPossible = draggables.length * 2
 
@@ -55,9 +57,21 @@ closeScoringModal.addEventListener("click", () => {
   })
 })
 
+closeResultsModal.addEventListener("click", () => {
+  resultsModal.classList.add("hide")
+  resultsModal.addEventListener("animationend", function hideDialog() {
+    resultsModal.classList.remove("hide")
+    resultsModal.close()
+    resultsModal.removeEventListener("animationend", hideDialog)
+  })
+})
+
 function submitButtonGraphics() {
   const unplacedItems = draggableArea.querySelectorAll(".draggable")
-  if (unplacedItems.length === 0) {
+  if (unplacedItems.length < draggables.length) {
+    submitButton.hidden = false
+    submitButton.disabled = false
+  } else if (unplacedItems.length === 0) {
     submitButton.classList.add("animate")
   } else {
     submitButton.classList.remove("animate")
@@ -214,9 +228,11 @@ export {
   draggables,
   containers,
   submitButton,
+  submitButtonGraphics,
   calculateTotalScore,
   draggableArea,
   pointsPossible,
+  resultsModal,
 }
 
 // let activityValue = 0

@@ -58,12 +58,23 @@ h1:hover {
 }
 
 .check-results:hover {
-  box-shadow: 0 0 9px 0 rgb(155, 155, 155);
+  box-shadow: 0 0 15px 0 rgb(155, 155, 155);
+}
+
+.stripe-box {
+  flex-basis: 100px;
+  height: 100%;
+}
+
+.stripes {
+  width: 0px;
 }
 
 .stripes.show {
   display: flex;
   height: 100%;
+  width: 100px;
+  transition: width 0.3s;
 }
 
 .black.show,
@@ -77,4 +88,40 @@ h1:hover {
 
 .stripe.show {
   width: 0.5rem;
+}
+
+.submit-button.clicked {
+  display: none;
+}
+
+/* belt color---------------------------------------------------------------------------------- */
+
+.top.white {
+  background-color: white;
+  transition: background-color 2s;
+}
+
+.top.blue {
+  background-color: rgb(53, 53, 255);
+  transition: background-color 1s;
+}
+
+.top.purple {
+  background-color: purple;
+  transition: background-color 1s;
+}
+
+.top.brown {
+  background-color: brown;
+  transition: background-color 1s;
+}
+
+.top.black {
+  background-color: black;
+  transition: background-color 1s;
+}
+
+.top.red {
+  background-color: red;
+  transition: background-color 1s;
 }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="tierstyle.css" />
     <script type="module" src="script.js" defer></script>
     <script type="module" src="results.js" defer></script>
+    
   </head>
   <body>
     <!-- tier list -->
@@ -78,24 +79,26 @@
           <div class="container rank 6" id="F">&nbsp;</div>
         </div>
       </div>
-
+      <!-- draggable section -->
       <div class="top">
-        <div class="click-count"></div>
+        <div class="score-box"><div class="scoring-display"></div></div>
+
         <div class="button-stuff">
           <button class="criteria-button">criteria</button>
           <button class="scoring-button">scoring</button>
         </div>
-        <div class="stripes">
-          <div class="score-box"><div class="scoring-display"></div></div>
-          <div class="black belt-end"></div>
-          <div class="stripe stripe-one belt-end"></div>
-          <div class="black belt-end"></div>
-          <div class="stripe stripe-two belt-end"></div>
-          <div class="black belt-end"></div>
-          <div class="stripe stripe-three belt-end"></div>
-          <div class="black belt-end"></div>
-          <div class="stripe stripe-four belt-end"></div>
-          <div class="black belt-end"></div>
+        <div class="stripe-box">
+          <div class="stripes">
+            <div class="black belt-end"></div>
+            <div class="stripe stripe-one belt-end"></div>
+            <div class="black belt-end"></div>
+            <div class="stripe stripe-two belt-end"></div>
+            <div class="black belt-end"></div>
+            <div class="stripe stripe-three belt-end"></div>
+            <div class="black belt-end"></div>
+            <div class="stripe stripe-four belt-end"></div>
+            <div class="black belt-end"></div>
+          </div>
         </div>
       </div>
       <!-- dialog boxes -->
@@ -141,18 +144,36 @@
           </li>
           <li>
             <span class="one-point">YELLOW</span>
-            =correct tier, wrong order(1pt)
+            =correct tier, incorrect order(1pt)
           </li>
           <li>
             <span class="zero-points">RED</span>
-            =wrong everything(0pts)
+            =incorrect everything(0pts)
           </li>
         </ul>
         <button class="close-scoring">close</button>
       </dialog>
+      <dialog class="your-score">
+        <p class="results-header">RESULTS:</p>
+        <div class="results-content"></div>
+        <div class="learn-more"></div>
+        <div class="interact">
+          click or tap on the submissions you've placed to learn more about them
+        </div>
+        <div class="email-results"></div>
+        <button class="close-results">close</button>
+      </dialog>
+      <dialog class="sub-info">
+        <div class="sub-name"></div>
+        <div class="sub-tier"></div>
+        <div class="sub-description"></div>
+        <div class="sub-links"></div>
+        <button class="close-sub-info">close</button>
+      </dialog>
       <!-- draggable items -->
       <div class="container draggables" id="bank">
         <p
+          id="triangle"
           class="draggable A 2 unplaced"
           draggable="true"
           data-rank="1"
@@ -164,6 +185,7 @@
           🔺triangle
         </p>
         <p
+          id="arm-triangle"
           class="draggable B 3 unplaced"
           draggable="true"
           data-rank="2"
@@ -175,6 +197,7 @@
           🔻arm triangle
         </p>
         <p
+          id="guillotine"
           class="draggable A 2 unplaced"
           draggable="true"
           data-rank="0"
@@ -186,6 +209,7 @@
           😖guillotine
         </p>
         <p
+          id="heel-hook"
           class="draggable S 1 unplaced"
           draggable="true"
           data-rank="1"
@@ -197,6 +221,7 @@
           😈heel hook
         </p>
         <p
+          id="armbar"
           class="draggable B 3 unplaced"
           draggable="true"
           data-rank="1"
@@ -208,6 +233,7 @@
           💪armbar
         </p>
         <p
+          id="rnc"
           class="draggable S 1 unplaced"
           draggable="true"
           data-rank="0"
@@ -219,6 +245,7 @@
           🦁rnc
         </p>
         <p
+          id="darce"
           class="draggable C 4 unplaced"
           draggable="true"
           data-rank="0"
@@ -229,6 +256,8 @@
         >
           🤗d'arce
         </p>
+      </div>
+      
         <!-- <p
           class="draggable C 4 unplaced"
           draggable="true"
@@ -275,7 +304,7 @@
         </p> -->
       </div>
       <div class="submit-area">
-        <button class="submit-button">submit</button>
+        <button class="submit-button" hidden disabled>submit</button>
       </div>
     </div>
     <div class="results-info"></div>
