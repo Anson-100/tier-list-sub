@@ -6,6 +6,8 @@ import {
   submitButtonGraphics,
 } from "./script.js"
 
+import { descriptions } from "./descriptions.js"
+
 const scoringDisplay = document.querySelector(".scoring-display")
 const scoreBar = document.querySelector(".top")
 const beltEnd = Array.from(document.querySelectorAll(".belt-end"))
@@ -18,6 +20,7 @@ let stripeAmount = undefined
 const subInfoModal = document.querySelector(".sub-info")
 const closeSubInfoModal = document.querySelector(".close-sub-info")
 const subInfoModalTitle = document.querySelector(".sub-name")
+const beltPic = document.querySelector(".belt-pic")
 
 const blackBeltFour = pointsPossible * 0.97
 const blackBeltTwo = pointsPossible * 0.94
@@ -159,19 +162,28 @@ submitButton.addEventListener("click", e => {
   }
 
   if (scoreBar.classList.item(1) == "red") {
+    beltPic.src = ""
     learnMore.innerText = "👌"
   } else if (scoreBar.classList.item(1) == "black") {
+    beltPic.src = ""
     learnMore.innerText = "your skills are legit"
   } else if (scoreBar.classList.item(1) == "brown") {
+    beltPic.src =
+      "https://tierlist-bucket.s3.us-east-2.amazonaws.com/pikachuBrown.png"
     learnMore.innerText =
       "your skills are advanced but there are still a couple holes in your game"
   } else if (scoreBar.classList.item(1) == "purple") {
+    beltPic.src =
+      "https://tierlist-bucket.s3.us-east-2.amazonaws.com/wickPurple.png"
     learnMore.innerText =
       "you are very skilled but there is still a lot more to learn"
   } else if (scoreBar.classList.item(1) == "blue") {
+    beltPic.src = ""
     learnMore.innerText =
       "you have developed some skill but you need to keep training"
   } else if (scoreBar.classList.item(1) == "white") {
+    beltPic.src =
+      "https://tierlist-bucket.s3.us-east-2.amazonaws.com/white1.png"
     learnMore.innerText =
       "train hard and smart and soon you will begin to feel more comfortable"
   }
@@ -237,15 +249,6 @@ submitButton.addEventListener("click", e => {
       }
     }
 
-    function descriptions() {
-      const subDescription = document.querySelector(".sub-description")
-      if (subInfoModal.open) {
-        subDescription.innerText = "hello"
-      }
-    }
-
-    descriptions()
-
     const subInfoModalDescription = document.querySelector(".sub-tier")
 
     subInfoModalTitle.innerText = this.innerText.substring(2)
@@ -269,15 +272,25 @@ submitButton.addEventListener("click", e => {
         thisContainer.id
       }-tier move. It should be ranked ${hiOrLow()}.`
     }
+
+    descriptions()
   }
 })
 closeSubInfoModal.addEventListener("click", () => {
   subInfoModal.classList.add("hide")
   subInfoModal.addEventListener("animationend", function hideDialog() {
     subInfoModal.classList.remove("hide")
+    subInfoModalTitle === ""
     subInfoModal.close()
     subInfoModal.removeEventListener("animationend", hideDialog)
   })
 })
 
-export { scoreBar, stripeAmount, beltColor, scoreboard }
+export {
+  scoreBar,
+  stripeAmount,
+  beltColor,
+  scoreboard,
+  subInfoModal,
+  subInfoModalTitle,
+}

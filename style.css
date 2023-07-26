@@ -251,6 +251,10 @@ li {
   padding: 0.5rem;
 }
 
+.sub-links {
+  text-decoration: none;
+}
+
 /* button styling ----------------------------------------------------------*/
 button {
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);

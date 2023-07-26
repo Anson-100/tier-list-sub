@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="tierstyle.css" />
     <script type="module" src="script.js" defer></script>
     <script type="module" src="results.js" defer></script>
+    <script type="module" src="descriptions.js" defer></script>
     
   </head>
   <body>
@@ -156,6 +157,7 @@
       <dialog class="your-score">
         <p class="results-header">RESULTS:</p>
         <div class="results-content"></div>
+        <img class="belt-pic">
         <div class="learn-more"></div>
         <div class="interact">
           click or tap on the submissions you've placed to learn more about them
@@ -166,8 +168,9 @@
       <dialog class="sub-info">
         <div class="sub-name"></div>
         <div class="sub-tier"></div>
+        <img class="sub-pic">
         <div class="sub-description"></div>
-        <div class="sub-links"></div>
+        <div><a class="sub-links" target="_blank"></a></div>
         <button class="close-sub-info">close</button>
       </dialog>
       <!-- draggable items -->
@@ -255,6 +258,50 @@
           data-activity="0"
         >
           🤗d'arce
+        </p>
+        <p
+          class="draggable C 4 unplaced"
+          draggable="true"
+          data-rank="1"
+          data-tier=""
+          data-order=""
+          data-score="0"
+          data-activity="0"
+        >
+          🐍anaconda
+        </p>
+        <p
+          class="draggable B 3 unplaced"
+          draggable="true"
+          data-rank="0"
+          data-tier=""
+          data-order=""
+          data-score="0"
+          data-activity="0"
+        >
+          🦍kimura
+        </p>
+        <p
+          class="draggable D 5 unplaced"
+          draggable="true"
+          data-rank="0"
+          data-tier=""
+          data-order=""
+          data-score="0"
+          data-activity="0"
+        >
+          🥨twister
+        </p>
+        <p
+          class="draggable F 6 unplaced"
+          draggable="true"
+          data-rank="0"
+          data-tier=""
+          data-order=""
+          data-score="0"
+          data-activity="0"
+        >
+          🎣fish hook
         </p>
       </div>
       

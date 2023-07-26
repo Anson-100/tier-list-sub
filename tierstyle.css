@@ -125,3 +125,10 @@ h1:hover {
   background-color: red;
   transition: background-color 1s;
 }
+
+/* more modal styling------------------------------------------------------- */
+
+.belt-pic {
+  width: 80%;
+  border-radius: 5px;
+}
