@@ -4,6 +4,10 @@ import {
   pointsPossible,
   resultsModal,
   submitButtonGraphics,
+  handleContainerTouchStart,
+  handleTouchStart,
+  containers,
+  draggables,
 } from "./script.js"
 
 import { descriptions } from "./descriptions.js"
@@ -57,8 +61,10 @@ function scoreboard() {
   console.log(whiteBeltOne)
   if (score == pointsPossible) {
     scoreBar.classList.add("red")
+    resultsModalContent.style.border = "1px solid red"
   } else if (score > parseInt(blackBelt)) {
     scoreBar.classList.add("black")
+    resultsModalContent.style.border = "1px solid black"
     if (score > parseInt(blackBeltFour)) {
       scoreBar.classList.add("four")
       stripeOne.style.backgroundColor = "white"
@@ -75,6 +81,7 @@ function scoreboard() {
     }
   } else if (score > parseInt(brownBelt)) {
     scoreBar.classList.add("brown")
+    resultsModalContent.style.border = "1px solid brown"
     if (score > parseInt(brownBeltFour)) {
       scoreBar.classList.add("four")
       stripeOne.style.backgroundColor = "white"
@@ -91,6 +98,7 @@ function scoreboard() {
     }
   } else if (score > parseInt(purpleBelt)) {
     scoreBar.classList.add("purple")
+    resultsModalContent.style.border = "1px solid purple"
     if (score > parseInt(purpleBeltFour)) {
       scoreBar.classList.add("four")
       stripeOne.style.backgroundColor = "white"
@@ -107,6 +115,7 @@ function scoreboard() {
     }
   } else if (score > parseInt(blueBelt)) {
     scoreBar.classList.add("blue")
+    resultsModalContent.style.border = "1px solid rgb(53, 53, 255)"
     if (score > parseInt(blueBeltFour)) {
       scoreBar.classList.add("four")
       stripeOne.style.backgroundColor = "white"
@@ -123,6 +132,7 @@ function scoreboard() {
     }
   } else {
     scoreBar.classList.add("white")
+    resultsModalContent.style.border = "1px solid white"
     if (score > parseInt(whiteBeltFour)) {
       scoreBar.classList.add("four")
       stripeOne.style.backgroundColor = "white"
@@ -148,6 +158,16 @@ submitButton.addEventListener("click", e => {
   const finalScore = calculateTotalScore()
   const placedItems = Array.from(document.querySelectorAll(".placed"))
   const unplacedItems = Array.from(document.querySelectorAll(".unplaced"))
+
+  draggables.forEach(draggable => {
+    draggable.removeEventListener("touchstart", handleTouchStart)
+  })
+
+  containers.forEach(container => {
+    container.removeEventListener("touchstart", e =>
+      handleContainerTouchStart(container, e)
+    )
+  })
 
   submitButton.disabled = true
   submitButton.classList.add("clicked")
@@ -216,6 +236,7 @@ submitButton.addEventListener("click", e => {
     })
   })
 
+  // submit modal stuff
   function handlePlacedItemClick() {
     subInfoModal.showModal()
     const orderWithinTierNumber = parseInt(this.dataset.rank) + 1
@@ -254,18 +275,21 @@ submitButton.addEventListener("click", e => {
     subInfoModalTitle.innerText = this.innerText.substring(2)
 
     if (this.dataset.score === "2") {
+      subInfoModalDescription.style.border = "1px solid lime"
       subInfoModalDescription.innerText = `Nice! The ${this.innerText.substring(
         2
       )} is ${anOrA()} ${
         this.classList[1]
       }-tier move and belongs in position ${orderWithinTier}.`
     } else if (this.dataset.score === "1") {
+      subInfoModalDescription.style.border = "1px solid yellow"
       subInfoModalDescription.innerText = `The ${this.innerText.substring(
         2
       )} is ${anOrA()} ${
         this.classList[1]
       }-tier move but it is supposed to go in position ${orderWithinTier}.`
     } else {
+      subInfoModalDescription.style.border = "1px solid red"
       subInfoModalDescription.innerText = `The ${this.innerText.substring(
         2
       )} isn't ${anOrA()} ${

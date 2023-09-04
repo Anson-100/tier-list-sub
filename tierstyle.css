@@ -129,11 +129,34 @@ h1:hover {
 /* more modal styling------------------------------------------------------- */
 
 .belt-pic {
-  width: 80%;
+  width: 70%;
   border-radius: 5px;
+  margin: 5px;
 }
 
 .sub-pic {
   width: 80%;
+  margin-top: 5px;
   border-radius: 5px;
+}
+
+.category {
+  font-weight: 600;
+  text-align: left;
+  background: linear-gradient(to right, rgb(93, 93, 93) 0%, gray 80%);
+  padding: 3px;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  color: rgb(255, 255, 255);
+}
+
+.stat-content {
+  text-align: left;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.sub-description {
+  text-align: justify;
 }

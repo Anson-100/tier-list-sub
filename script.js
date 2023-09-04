@@ -96,50 +96,94 @@ draggables.forEach(draggable => {
 // mobile touch logic----------------------------------------------------------------
 // if ("ontouchstart" in window) {
 // }
-draggables.forEach(draggable => {
-  draggable.addEventListener("touchstart", e => {
-    e.stopPropagation()
-    draggables.forEach(item => {
-      if (item !== draggable && item.classList.contains("dragging")) {
-        item.classList.remove("dragging")
-      }
-    })
-    draggable.classList.toggle("dragging")
+
+function handleTouchStart(e) {
+  e.stopPropagation()
+  draggables.forEach(item => {
+    if (item !== e.currentTarget && item.classList.contains("dragging")) {
+      item.classList.remove("dragging")
+    }
   })
+  e.currentTarget.classList.toggle("dragging")
+}
+
+draggables.forEach(draggable => {
+  draggable.addEventListener("touchstart", handleTouchStart)
 })
 
 // mobile sorting logic--------------------------------------------------------------------------------
-containers.forEach(container => {
-  container.addEventListener("touchstart", e => {
-    const afterElement = sortDraggableElements(container, e.clientX)
-    const draggable = document.querySelector(".dragging")
 
-    if (container.id != "bank") {
-      if (afterElement == null) {
-        container.appendChild(draggable)
-        draggable.classList.remove("dragging")
-      } else {
-        container.insertBefore(draggable, afterElement)
-        draggable.classList.remove("dragging")
-      }
-    } else if (container.id == "bank") {
+// containers.forEach(container => {
+//   container.addEventListener("touchstart", handleContainerTouchStart)
+// })
+
+function handleContainerTouchStart(container, e) {
+  const afterElement = sortDraggableElements(container, e.clientX)
+  const draggable = document.querySelector(".dragging")
+
+  if (container.id != "bank") {
+    if (afterElement == null) {
       container.appendChild(draggable)
       draggable.classList.remove("dragging")
+    } else {
+      container.insertBefore(draggable, afterElement)
+      draggable.classList.remove("dragging")
+    }
+  } else if (container.id == "bank") {
+    container.appendChild(draggable)
+    draggable.classList.remove("dragging")
+  }
+
+  const draggableItems = Array.from(container.querySelectorAll(".draggable"))
+
+  draggableItems.forEach((draggableItem, index) => {
+    const rankValue = draggableItem.dataset.rank
+    const indexValue = index.toString()
+
+    if (container.id != "bank") {
+      draggableItem.classList.remove("unplaced")
+      draggableItem.classList.add("placed")
+    } else {
+      draggableItem.classList.remove("placed")
+      draggableItem.classList.add("unplaced")
     }
 
+    if (
+      indexValue === rankValue &&
+      container.id === draggableItem.classList[1]
+    ) {
+      if (
+        index > 0 &&
+        draggableItems[index - 1].dataset.order !== "true" &&
+        draggableItem.dataset.order === "true"
+      ) {
+        draggableItem.dataset.order = ""
+        draggableItem.dataset.tier = "true"
+        draggableItem.dataset.score = 1
+      } else {
+        draggableItem.dataset.order = "true"
+        draggableItem.dataset.tier = "true"
+        draggableItem.dataset.score = 2
+      }
+    } else if (
+      indexValue != rankValue &&
+      container.id === draggableItem.classList[1]
+    ) {
+      draggableItem.dataset.order = ""
+      draggableItem.dataset.tier = "true"
+      draggableItem.dataset.score = 1
+    } else {
+      draggableItem.dataset.order = ""
+      draggableItem.dataset.tier = ""
+      draggableItem.dataset.score = 0
+    }
+  })
+  containers.forEach(container => {
     const draggableItems = Array.from(container.querySelectorAll(".draggable"))
 
     draggableItems.forEach((draggableItem, index) => {
       const rankValue = draggableItem.dataset.rank
       const indexValue = index.toString()
-
-      if (container.id != "bank") {
-        draggableItem.classList.remove("unplaced")
-        draggableItem.classList.add("placed")
-      } else {
-        draggableItem.classList.remove("placed")
-        draggableItem.classList.add("unplaced")
-      }
 
       if (
         indexValue === rankValue &&
@@ -171,52 +215,18 @@ containers.forEach(container => {
         draggableItem.dataset.score = 0
       }
     })
-    containers.forEach(container => {
-      const draggableItems = Array.from(
-        container.querySelectorAll(".draggable")
-      )
-
-      draggableItems.forEach((draggableItem, index) => {
-        const rankValue = draggableItem.dataset.rank
-        const indexValue = index.toString()
-
-        if (
-          indexValue === rankValue &&
-          container.id === draggableItem.classList[1]
-        ) {
-          if (
-            index > 0 &&
-            draggableItems[index - 1].dataset.order !== "true" &&
-            draggableItem.dataset.order === "true"
-          ) {
-            draggableItem.dataset.order = ""
-            draggableItem.dataset.tier = "true"
-            draggableItem.dataset.score = 1
-          } else {
-            draggableItem.dataset.order = "true"
-            draggableItem.dataset.tier = "true"
-            draggableItem.dataset.score = 2
-          }
-        } else if (
-          indexValue != rankValue &&
-          container.id === draggableItem.classList[1]
-        ) {
-          draggableItem.dataset.order = ""
-          draggableItem.dataset.tier = "true"
-          draggableItem.dataset.score = 1
-        } else {
-          draggableItem.dataset.order = ""
-          draggableItem.dataset.tier = ""
-          draggableItem.dataset.score = 0
-        }
-      })
-    })
-    submitButtonGraphics()
-
-    //call scoring function
-    const runningTotal = calculateTotalScore()
-    console.log("total score: ", runningTotal)
   })
+  submitButtonGraphics()
+
+  //call scoring function
+  const runningTotal = calculateTotalScore()
+  console.log("total score: ", runningTotal)
+}
+
+containers.forEach(container => {
+  container.addEventListener("touchstart", e =>
+    handleContainerTouchStart(container, e)
+  )
 })
 
 // sortinglogic-------------------------------------------------------------------
@@ -360,4 +370,6 @@ export {
   draggableArea,
   pointsPossible,
   resultsModal,
+  handleContainerTouchStart,
+  handleTouchStart,
 }

@@ -10,7 +10,6 @@
     <script type="module" src="script.js" defer></script>
     <script type="module" src="results.js" defer></script>
     <script type="module" src="descriptions.js" defer></script>
-    
   </head>
   <body>
     <!-- tier list -->
@@ -108,23 +107,31 @@
         <ul class="criteria-list">
           <li>
             <p class="criteria-words">EFFECTIVENESS</p>
-            how likely is this submission to force a tap or neutralize an
-            opponent in a competition or street encounter?
+            <p class="criteria-description">
+              How likely is this submission to neutralize an opponent in
+              competition or the streets?
+            </p>
           </li>
           <li>
             <p class="criteria-words">VERSATILITY</p>
-            is this submission effective against larger opponents? can it be
-            applied from various positions?
+            <p class="criteria-description">
+              is this submission effective against larger opponents? can it be
+              applied from various positions?
+            </p>
           </li>
           <li>
             <p class="criteria-words">RELIABILITY</p>
-            How consistently can the submission be successfully applied, even
-            against skilled opponents?
+            <p class="criteria-description">
+              How consistently can the submission be successfully applied, even
+              against skilled opponents?
+            </p>
           </li>
           <li>
             <p class="criteria-words">RISK VS REWARD</p>
-            evaluate the potential gain against the potential exposure to
-            counters or escapes
+            <p class="criteria-description">
+              evaluate the potential gain against the potential exposure to
+              counters or escapes
+            </p>
           </li>
         </ul>
         <button class="close-criteria">close</button>
@@ -133,31 +140,41 @@
         <div class="scoring-system">
           EACH SUBMISSION CAN EARN A MAXIMUM OF 2 POINTS:
         </div>
+
+        <p class="italic">
+          click the "submit" button when you are ready to check your score
+        </p>
+        <br />
         <ul class="scoring-list">
-          <li>1 point for placing it in the correct tier</li>
-          <li>1 point for placing it in the correct order within that tier</li>
-          <br />
-          <li>click the "submit" button to see results</li>
-          <br />
-          <li>
-            <span class="two-points">GREEN</span>
-            =correct tier, correct order(2pts)
+          <li class="points">
+            <span class="key two-points">GREEN(2pts)</span>
+
+            <p class="stuff">
+              <span class="correct">correct tier</span>
+              <span class="correct">correct order</span>
+            </p>
           </li>
-          <li>
-            <span class="one-point">YELLOW</span>
-            =correct tier, incorrect order(1pt)
+          <li class="points">
+            <span class="key one-point">YELLOW(1pt)</span>
+            <p class="stuff">
+              <span class="correct">correct tier</span>
+              <span class="incorrect">incorrect order</span>
+            </p>
           </li>
-          <li>
-            <span class="zero-points">RED</span>
-            =incorrect everything(0pts)
+          <li class="points">
+            <span class="key zero-points">RED(0pts)</span>
+            <p class="stuff">
+              <span class="incorrect">incorrect tier</span>
+              <span class="incorrect">incorrect order</span>
+            </p>
           </li>
         </ul>
         <button class="close-scoring">close</button>
       </dialog>
       <dialog class="your-score">
-        <p class="results-header">RESULTS:</p>
+        <p class="results-header">RESULTS</p>
         <div class="results-content"></div>
-        <img class="belt-pic">
+        <img class="belt-pic" />
         <div class="learn-more"></div>
         <div class="interact">
           click or tap on the submissions you've placed to learn more about them
@@ -165,11 +182,27 @@
         <div class="email-results"></div>
         <button class="close-results">close</button>
       </dialog>
+      <!-- sub educational modals-------------------------------------------------------- -->
       <dialog class="sub-info">
         <div class="sub-name"></div>
         <div class="sub-tier"></div>
-        <img class="sub-pic">
-        <div class="sub-description"></div>
+        <img class="sub-pic" />
+        <div class="info-header">
+          <div>
+            <p class="category">type</p>
+            <p class="stat-content sub-type"></p>
+          </div>
+          <div>
+            <p class="category">variation</p>
+
+            <p class="stat-content sub-variation"></p>
+          </div>
+          <div class="story">
+            <p class="category">description</p>
+            <p class="stat-content sub-description"></p>
+          </div>
+        </div>
+
         <div><a class="sub-links" target="_blank"></a></div>
         <button class="close-sub-info">close</button>
       </dialog>
@@ -201,9 +234,9 @@
         </p>
         <p
           id="guillotine"
-          class="draggable A 2 unplaced"
+          class="draggable S 2 unplaced"
           draggable="true"
-          data-rank="0"
+          data-rank="1"
           data-tier=""
           data-order=""
           data-score="0"
@@ -215,7 +248,7 @@
           id="heel-hook"
           class="draggable S 1 unplaced"
           draggable="true"
-          data-rank="1"
+          data-rank="2"
           data-tier=""
           data-order=""
           data-score="0"
@@ -304,8 +337,8 @@
           🎣fish hook
         </p>
       </div>
-      
-        <!-- <p
+
+      <!-- <p
           class="draggable C 4 unplaced"
           draggable="true"
           data-rank="1"
@@ -349,11 +382,11 @@
         >
           🎣fish hook
         </p> -->
-      </div>
-      <div class="submit-area">
-        <button class="submit-button" hidden disabled>submit</button>
-      </div>
     </div>
+    <div class="submit-area">
+      <button class="submit-button" hidden disabled>submit</button>
+    </div>
+
     <div class="results-info"></div>
     <!-- footer -->
     <footer id="footer">© Anson Hunnell, 2023</footer>
