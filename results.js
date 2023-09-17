@@ -10,6 +10,15 @@ import {
   draggables,
 } from "./script.js"
 
+import {
+  subInfoLink,
+  subInfoLinkTwo,
+  subActionLink,
+  subCounterLink,
+  subCounterLinkTwo,
+  subCounterLinkThree,
+} from "./descriptions.js"
+
 import { descriptions } from "./descriptions.js"
 
 const scoringDisplay = document.querySelector(".scoring-display")
@@ -182,10 +191,10 @@ submitButton.addEventListener("click", e => {
   }
 
   if (scoreBar.classList.item(1) == "red") {
-    beltPic.src = ""
+    beltPic.src = "assets/red pimp 2.png"
     learnMore.innerText = "👌"
   } else if (scoreBar.classList.item(1) == "black") {
-    beltPic.src = ""
+    beltPic.src = "assets/black belt 1.png"
     learnMore.innerText = "your skills are legit"
   } else if (scoreBar.classList.item(1) == "brown") {
     beltPic.src =
@@ -198,12 +207,11 @@ submitButton.addEventListener("click", e => {
     learnMore.innerText =
       "you are very skilled but there is still a lot more to learn"
   } else if (scoreBar.classList.item(1) == "blue") {
-    beltPic.src = ""
+    beltPic.src = "assets/blue belt cat 2.png"
     learnMore.innerText =
       "you have developed some skill but you need to keep training"
   } else if (scoreBar.classList.item(1) == "white") {
-    beltPic.src =
-      "https://tierlist-bucket.s3.us-east-2.amazonaws.com/white1.png"
+    beltPic.src = "assets/white belt 1.png"
     learnMore.innerText =
       "train hard and smart and soon you will begin to feel more comfortable"
   }
@@ -273,6 +281,8 @@ submitButton.addEventListener("click", e => {
     const subInfoModalDescription = document.querySelector(".sub-tier")
 
     subInfoModalTitle.innerText = this.innerText.substring(2)
+    // const draggableText = this.querySelector(".name")
+    // subInfoModalTitle.innerText = draggableText.innerText
 
     if (this.dataset.score === "2") {
       subInfoModalDescription.style.border = "1px solid lime"
@@ -308,6 +318,14 @@ closeSubInfoModal.addEventListener("click", () => {
     subInfoModal.close()
     subInfoModal.removeEventListener("animationend", hideDialog)
   })
+  subInfoLink.classList.remove("hidden")
+  subInfoLink.innerText = "learn"
+  subActionLink.classList.remove("hidden")
+  subCounterLink.classList.remove("hidden")
+  subCounterLink.innerText = "defense/counter"
+  subInfoLinkTwo.classList.add("hidden")
+  subCounterLinkTwo.classList.add("hidden")
+  subCounterLinkThree.classList.add("hidden")
 })
 
 export {

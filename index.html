@@ -17,15 +17,15 @@
       <div class="tier-list">
         <div class="tier">
           <h1 id="s-tier">
-            S<span class="tooltip-text" id="fade"
+            S
+            <span class="tooltip-text" id="fade"
               >Look at the criteria list. Based on these attributes, which
               submissions have the most maxed out stats? These are the
               techniques that belong in S-tier and every grappler should seek to
               become proficient in their use.</span
             >
           </h1>
-
-          <div class="container rank 1" id="S">&nbsp;</div>
+          <div class="container rank 1" id="S"></div>
         </div>
         <div class="tier">
           <h1 id="a-tier">
@@ -35,7 +35,7 @@
               S-tier.
             </span>
           </h1>
-          <div class="container rank 2" id="A">&nbsp;</div>
+          <div class="container rank 2" id="A"></div>
         </div>
         <div class="tier">
           <h1 id="b-tier">
@@ -46,7 +46,7 @@
               for neutralizing an opponent in a street encounter
             </span>
           </h1>
-          <div class="container rank 3" id="B">&nbsp;</div>
+          <div class="container rank 3" id="B"></div>
         </div>
         <div class="tier">
           <h1 id="c-tier">
@@ -57,7 +57,7 @@
               this is the exception rather than the rule.
             </span>
           </h1>
-          <div class="container rank 4" id="C">&nbsp;</div>
+          <div class="container rank 4" id="C"></div>
         </div>
         <div class="tier">
           <h1 id="d-tier">
@@ -69,14 +69,14 @@
               is not recommended.</span
             >
           </h1>
-          <div class="container rank 5" id="D">&nbsp;</div>
+          <div class="container rank 5" id="D"></div>
         </div>
         <div class="tier">
           <h1 id="f-tier">
             F
             <span class="tooltip-text"> These moves are trash. </span>
           </h1>
-          <div class="container rank 6" id="F">&nbsp;</div>
+          <div class="container rank 6" id="F"></div>
         </div>
       </div>
       <!-- draggable section -->
@@ -175,7 +175,9 @@
         <p class="results-header">RESULTS</p>
         <div class="results-content"></div>
         <img class="belt-pic" />
-        <div class="learn-more"></div>
+        <div class="box-text">
+          <div class="learn-more"></div>
+        </div>
         <div class="interact">
           click or tap on the submissions you've placed to learn more about them
         </div>
@@ -194,25 +196,46 @@
           </div>
           <div>
             <p class="category">variation</p>
-
             <p class="stat-content sub-variation"></p>
           </div>
-          <div class="story">
-            <p class="category">description</p>
-            <p class="stat-content sub-description"></p>
+          <!-- <div>
+            <p class="category">effectiveness</p>
+            <p class="stat-content effectiveness"></p>
           </div>
+          <div>
+            <p class="category">versatility</p>
+            <p class="stat-content versatility"></p>
+          </div>
+          <div>
+            <p class="category">reliability</p>
+            <p class="stat-content reliability"></p>
+          </div>
+          <div>
+            <p class="category">risk vs reward</p>
+            <p class="stat-content risk-vs-reward"></p>
+          </div> -->
         </div>
-
-        <div><a class="sub-links" target="_blank"></a></div>
+        <div class="story">
+          <p class="category">description</p>
+          <p class="stat-content sub-description"></p>
+        </div>
+        <div class="sub-link-action">
+          <a class="sub-links" target="_blank">learn</a>
+          <a class="sub-links-2 hidden" target="_blank"></a>
+          <a class="sub-action" target="_blank">watch</a>
+          <a class="sub-counter" target="_blank">defense/counter</a>
+          <a class="sub-counter-2 hidden" target="_blank"></a>
+          <a class="sub-counter-3 hidden" target="_blank"></a>
+        </div>
         <button class="close-sub-info">close</button>
       </dialog>
       <!-- draggable items -->
       <div class="container draggables" id="bank">
         <p
           id="triangle"
-          class="draggable A 2 unplaced"
+          class="draggable A 1 unplaced"
           draggable="true"
-          data-rank="1"
+          data-rank="0"
           data-tier=""
           data-order=""
           data-score="0"
@@ -234,7 +257,7 @@
         </p>
         <p
           id="guillotine"
-          class="draggable S 2 unplaced"
+          class="draggable S 1 unplaced"
           draggable="true"
           data-rank="1"
           data-tier=""
@@ -258,7 +281,7 @@
         </p>
         <p
           id="armbar"
-          class="draggable B 3 unplaced"
+          class="draggable C 4 unplaced"
           draggable="true"
           data-rank="1"
           data-tier=""
@@ -282,7 +305,7 @@
         </p>
         <p
           id="darce"
-          class="draggable C 4 unplaced"
+          class="draggable B 3 unplaced"
           draggable="true"
           data-rank="0"
           data-tier=""
@@ -293,7 +316,8 @@
           🤗d'arce
         </p>
         <p
-          class="draggable C 4 unplaced"
+          id="anaconda"
+          class="draggable B 3 unplaced"
           draggable="true"
           data-rank="1"
           data-tier=""
@@ -304,7 +328,8 @@
           🐍anaconda
         </p>
         <p
-          class="draggable B 3 unplaced"
+          id="kimura"
+          class="draggable C 3 unplaced"
           draggable="true"
           data-rank="0"
           data-tier=""
@@ -315,6 +340,7 @@
           🦍kimura
         </p>
         <p
+          id="twister"
           class="draggable D 5 unplaced"
           draggable="true"
           data-rank="0"
@@ -326,6 +352,7 @@
           🥨twister
         </p>
         <p
+          id="fish-hook"
           class="draggable F 6 unplaced"
           draggable="true"
           data-rank="0"
@@ -335,6 +362,30 @@
           data-activity="0"
         >
           🎣fish hook
+        </p>
+        <p
+          id="americana"
+          class="draggable C 4 unplaced"
+          draggable="true"
+          data-rank="2"
+          data-tier=""
+          data-order=""
+          data-score="0"
+          data-activity="0"
+        >
+          🔑americana
+        </p>
+        <p
+          id="omoplata"
+          class="draggable D 5 unplaced"
+          draggable="true"
+          data-rank="1"
+          data-tier=""
+          data-order=""
+          data-score="0"
+          data-activity="0"
+        >
+          🦵omoplata
         </p>
       </div>
 

@@ -113,10 +113,6 @@ draggables.forEach(draggable => {
 
 // mobile sorting logic--------------------------------------------------------------------------------
 
-// containers.forEach(container => {
-//   container.addEventListener("touchstart", handleContainerTouchStart)
-// })
-
 function handleContainerTouchStart(container, e) {
   const afterElement = sortDraggableElements(container, e.clientX)
   const draggable = document.querySelector(".dragging")
