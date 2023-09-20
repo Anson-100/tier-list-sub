@@ -62,7 +62,9 @@ html {
   align-items: center;
   flex: 1;
   background-color: rgb(25, 25, 25);
-  height: 4.9rem;
+  height: 5rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 @media (max-width: 480px) {
@@ -122,7 +124,14 @@ html {
 }
 
 /* section (div) styling -------------------------------------------------------------*/
+.tier-list {
+  position: sticky;
+  height: 524px;
+  top: 0;
+}
+
 .top {
+  overflow-y: auto;
   background-color: var(--dark-gray);
   display: flex;
   justify-content: space-between;
