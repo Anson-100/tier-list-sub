@@ -151,8 +151,8 @@ h1:hover {
   text-align: left;
   background: linear-gradient(
     to right,
-    rgb(93, 93, 93) 0%,
-    var(--mid-gray) 80%
+    rgb(69, 69, 69) 0%,
+    rgb(15, 15, 15) 80%
   );
   padding: 3px;
   border-radius: 5px;

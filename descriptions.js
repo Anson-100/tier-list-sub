@@ -208,7 +208,7 @@ function descriptions() {
       subType.innerText = "joint lock"
       subVariation.innerText = "rotational/twisting"
       subDescription.innerText =
-        "The kimura is a very effective submission capable causing tremendous damage the shoulder. However, finishing the move can be difficult against strong opponents who are able to maintain their grip and keep their hand in front of their body. The real power of this technique lies in the kimura grip itself, which is extremely secure can be used to threaten, slow down, or immobilize an opponent long enough to establish a dominant position. These applications can also be extended to a street encounter."
+        "The kimura is a very effective submission capable causing tremendous damage to the shoulder. However, finishing the move can be difficult against strong opponents who are able to maintain their grip and keep their hand in front of their body. The real power of this technique lies in the kimura grip itself, which is extremely secure can be used to threaten, slow down, or immobilize an opponent long enough to establish a dominant position. These applications can also be extended to a street encounter."
       subInfoLink.setAttribute(
         "href",
         "https://www.youtube.com/watch?v=p-6lmaseoGI"

@@ -10,6 +10,8 @@ import {
   draggables,
 } from "./script.js"
 
+import { addRefreshButton } from "./server.js"
+
 import {
   subInfoLink,
   subInfoLinkTwo,

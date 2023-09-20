@@ -1,3 +1,5 @@
+import { addRefreshButton } from "./server.js"
+
 const draggables = document.querySelectorAll(".draggable")
 const draggableArea = document.getElementById("bank")
 const containers = document.querySelectorAll(".container")
@@ -64,6 +66,7 @@ closeResultsModal.addEventListener("click", () => {
     resultsModal.close()
     resultsModal.removeEventListener("animationend", hideDialog)
   })
+  addRefreshButton()
 })
 
 function submitButtonGraphics() {
