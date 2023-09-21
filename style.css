@@ -69,8 +69,16 @@ html {
 }
 
 @media (max-width: 480px) {
-  .rank {
+  /* .rank {
     justify-content: space-between;
+  } */
+
+  .placed .name {
+    font-size: 0px;
+  }
+
+  .placed.dragging .name {
+    font-size: 1.3rem;
   }
 }
 
@@ -104,13 +112,17 @@ html {
   margin: 0.2rem;
   padding: 0.2rem;
   color: black;
-  background-color: aliceblue;
+  background-color: white;
   display: inline-block;
   border: 2px solid black;
   cursor: move;
   transition: transform 0.2s ease;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 25px;
+}
+
+.name {
+  color: black;
 }
 
 .draggables {
@@ -130,7 +142,7 @@ html {
 /* section (div) styling -------------------------------------------------------------*/
 .tier-list {
   position: sticky;
-  height: 480px;
+  height: 524px;
   top: 0;
 }
 

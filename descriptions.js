@@ -114,7 +114,7 @@ function descriptions() {
       subType.innerText = "joint lock"
       subVariation.innerText = "straight"
       subDescription.innerText =
-        "The armbar is a technique where an opponent's arm is isolated and hyperextended. It is one of the highest percentage submissions in competition and one of the first submissions taught to new bjj students. It is not the most effective option for a street encounter, however, since hyperextending a person's arm may not cause enough pain or damage to deter your opponent."
+        "The armbar involves isolating an opponent's arm and hyperextending the elbow joint until a tap or injury occurs. It is one of the highest percentage submissions in competition and one of the first submissions taught to new bjj students. It is not the most effective option for neutralizing a street encounter, however, since hyperextending a person's arm may not cause enough pain or damage to deter your opponent."
       subInfoLink.setAttribute(
         "href",
         "https://www.youtube.com/watch?v=GshEzcqlUbY&t=34s"
