@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>BJJ Submission Tier List</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="tierstyle.css" />
     <script type="module" src="script.js" defer></script>
@@ -17,9 +17,9 @@
     <div class="content">
       <div class="tier-list">
         <div class="tier">
-          <h1 id="s-tier">
+          <h1 class="learn" id="s-tier">
             S
-            <span class="tooltip-text" id="fade"
+            <span class="tooltip-text learn" id="fade"
               >Look at the criteria list. Based on these attributes, which
               submissions have the most maxed out stats? These are the
               techniques that belong in S-tier and every grappler should seek to
@@ -29,8 +29,9 @@
           <div class="container rank 1" id="S"></div>
         </div>
         <div class="tier">
-          <h1 id="a-tier">
-            A<span class="tooltip-text">
+          <h1 class="learn" id="a-tier">
+            A
+            <span class="tooltip-text learn">
               A-tier submissions are highly effective and viable but usually
               have a slight drawback or limitation that keeps them out of
               S-tier.
@@ -39,9 +40,9 @@
           <div class="container rank 2" id="A"></div>
         </div>
         <div class="tier">
-          <h1 id="b-tier">
+          <h1 class="learn" id="b-tier">
             B
-            <span class="tooltip-text">
+            <span class="tooltip-text learn">
               B-tier submissions are solid techniques however they are usually
               better-suited for competition use. They may not be the best option
               for neutralizing an opponent in a street encounter
@@ -50,9 +51,9 @@
           <div class="container rank 3" id="B"></div>
         </div>
         <div class="tier">
-          <h1 id="c-tier">
+          <h1 class="learn" id="c-tier">
             C
-            <span class="tooltip-text">
+            <span class="tooltip-text learn">
               C-tier is the place for lower percentage moves. Some people may
               specialize in their use and have a lot of success with them but
               this is the exception rather than the rule.
@@ -61,30 +62,37 @@
           <div class="container rank 4" id="C"></div>
         </div>
         <div class="tier">
-          <h1 id="d-tier">
+          <h1 class="learn" id="d-tier">
             D
-            <span class="tooltip-text"
-              >These are very low percentage moves that people may pull off
-              every now and then due to a rare opportunity. Learn D-tier
-              submissions for fun but making them the cornerstone of your game
-              is not recommended.</span
+            <span class="tooltip-text learn"
+              >D-tier techniques are extremely low percentage and are usually
+              pulled off only every now and then due to a rare opportunity.
+              Learn D-tier submissions for fun but making them the cornerstone
+              of your game is not recommended.</span
             >
           </h1>
           <div class="container rank 5" id="D"></div>
         </div>
         <div class="tier">
-          <h1 id="f-tier">
+          <h1 class="learn" id="f-tier">
             F
-            <span class="tooltip-text"> These moves are trash. </span>
+            <span class="tooltip-text learn"> These moves are trash.</span>
           </h1>
           <div class="container rank 6" id="F"></div>
         </div>
         <div class="top">
           <div class="score-box"><div class="scoring-display"></div></div>
-
+          <!-- buttons and bank------------------------------------------------------------ -->
           <div class="button-stuff">
-            <button class="criteria-button">criteria</button>
-            <button class="scoring-button">scoring</button>
+            <button class="instructions-button">instructions</button>
+            <div class="switch-container">
+              <p class="toggle-learn active">learn</p>
+              <label class="switch">
+                <input type="checkbox" id="playToggle" />
+                <span class="slider round"></span>
+              </label>
+              <p class="toggle-play">play</p>
+            </div>
           </div>
           <div class="stripe-box">
             <div class="stripes">
@@ -104,6 +112,82 @@
       <!-- draggable section --------------------------------------------------------------->
 
       <!-- dialog boxes ------------------------------------------------------------------>
+      <dialog class="instructions-modal">
+        <div class="instructions">INSTRUCTIONS</div>
+        <!-- <p class="instructions-header">
+          Rank the submissions below based on these
+        </p> -->
+        <ul>
+          <li>
+            <p class="steps">1</p>
+            <p class="step-info">
+              check out the
+              <button class="scoring-button">score key</button> and then
+              click/tap all the submissions below to see them in action
+            </p>
+          </li>
+          <li>
+            <p class="steps">2</p>
+            <p class="step-info">
+              flip the switch to "play" mode and start arrange the submissions
+              in the tier list according to these
+              <button class="criteria-button">criteria</button>
+            </p>
+          </li>
+          <li>
+            <p class="steps">3</p>
+            <p class="step-info">
+              click/tap the "submit" button when you are ready to check your
+              results
+            </p>
+          </li>
+          <li>
+            <p class="steps">4</p>
+            <p class="step-info">
+              click/tap any of the submissions you've placed in the tier list to
+              learn more about them
+            </p>
+          </li>
+          <!-- <li>
+            <p class="steps">5</p>
+            <p class="step-info"></p>
+          </li> -->
+        </ul>
+
+        <button class="close-instructions">close</button>
+      </dialog>
+      <dialog class="gif-modal">
+        <img class="gif-modal-gif" src="" alt="" />
+        <button class="close-gif-modal">close</button>
+      </dialog>
+      <dialog class="cheat-modal">
+        <!-- <div class="cheat-header">CHEAT SHEET</div> -->
+        <div class="question">
+          -Strangles/chokes are usually better than joint locks.
+          <button class="why first">Why?</button>
+        </div>
+        <div class="answer best">
+          Because an opponent may have enough pain tolerance, force of will, or
+          drug-induced psychosis to to remain undeterred from having an arm
+          broken or shoulder dislocated.
+        </div>
+        <div class="question">
+          -Strangles where the arms wrap around just the head are usually better
+          than strangles where the arms or legs wrap around a head and an arm.
+          <button class="why second">Why?</button>
+        </div>
+        <div class="answer better">
+          Because strangles that wrap around just the head usually provide more
+          focused pressure on the carotid arteries, making them more effective
+          in cutting off blood supply to the brain.
+        </div>
+        <div class="question">
+          -Rotational joint locks are usually better than straight joint locks.
+          <button class="why third">Why?</button>
+        </div>
+        <div class="answer good">Because they cause way more damage.</div>
+        <button class="close-cheat">close</button>
+      </dialog>
       <dialog class="criteria-modal">
         <div class="instructions">RANK THESE SUBMISSIONS BASED ON</div>
         <ul class="criteria-list">
@@ -142,24 +226,20 @@
         <div class="scoring-system">
           EACH SUBMISSION CAN EARN A MAXIMUM OF 2 POINTS
         </div>
-
-        <p class="italic">
-          click the "submit" button when you are ready to check your score
-        </p>
         <br />
         <ul class="scoring-list">
           <li class="points">
             <span class="key two-points">GREEN(2pts)</span>
 
             <p class="stuff">
-              <span class="correct">correct tier</span>
-              <span class="correct">correct order</span>
+              <span class="correct">correct tier + 1pt</span>
+              <span class="correct">correct order + 1pt</span>
             </p>
           </li>
           <li class="points">
             <span class="key one-point">YELLOW(1pt)</span>
             <p class="stuff">
-              <span class="correct">correct tier</span>
+              <span class="correct">correct tier + 1pt</span>
               <span class="incorrect">incorrect order</span>
             </p>
           </li>
@@ -180,9 +260,9 @@
         <div class="box-text">
           <div class="learn-more"></div>
         </div>
-        <div class="interact">
+        <!-- <div class="interact">
           click or tap on the submissions you've placed to learn more about them
-        </div>
+        </div> -->
         <div class="email-results"></div>
         <button class="close-results">close</button>
       </dialog>
@@ -225,7 +305,7 @@
           <a class="sub-links" target="_blank">learn</a>
           <a class="sub-links-2 hidden" target="_blank"></a>
           <a class="sub-action" target="_blank">watch</a>
-          <a class="sub-counter" target="_blank">defense/counter</a>
+          <a class="sub-counter" target="_blank">defend/counter</a>
           <a class="sub-counter-2 hidden" target="_blank"></a>
           <a class="sub-counter-3 hidden" target="_blank"></a>
         </div>
@@ -233,10 +313,11 @@
       </dialog>
       <!-- draggable items ---------------------------------------------------------------->
       <div class="container draggables" id="bank">
+        <button class="cheat-button">cheat sheet</button>
         <p
           id="triangle"
-          class="draggable A 1 unplaced"
-          draggable="true"
+          class="draggable A 1 unplaced learning"
+          draggable="false"
           data-rank="0"
           data-tier=""
           data-order=""
@@ -247,8 +328,8 @@
         </p>
         <p
           id="arm-triangle"
-          class="draggable B 3 unplaced"
-          draggable="true"
+          class="draggable B 3 unplaced learning"
+          draggable="false"
           data-rank="2"
           data-tier=""
           data-order=""
@@ -259,8 +340,8 @@
         </p>
         <p
           id="guillotine"
-          class="draggable S 1 unplaced"
-          draggable="true"
+          class="draggable S 1 unplaced learning"
+          draggable="false"
           data-rank="1"
           data-tier=""
           data-order=""
@@ -271,8 +352,8 @@
         </p>
         <p
           id="heel-hook"
-          class="draggable S 1 unplaced"
-          draggable="true"
+          class="draggable S 1 unplaced learning"
+          draggable="false"
           data-rank="2"
           data-tier=""
           data-order=""
@@ -283,8 +364,8 @@
         </p>
         <p
           id="armbar"
-          class="draggable C 4 unplaced"
-          draggable="true"
+          class="draggable C 4 unplaced learning"
+          draggable="false"
           data-rank="1"
           data-tier=""
           data-order=""
@@ -295,8 +376,8 @@
         </p>
         <p
           id="rnc"
-          class="draggable S 1 unplaced"
-          draggable="true"
+          class="draggable S 1 unplaced learning"
+          draggable="false"
           data-rank="0"
           data-tier=""
           data-order=""
@@ -307,8 +388,8 @@
         </p>
         <p
           id="darce"
-          class="draggable B 3 unplaced"
-          draggable="true"
+          class="draggable B 3 unplaced learning"
+          draggable="false"
           data-rank="0"
           data-tier=""
           data-order=""
@@ -319,8 +400,8 @@
         </p>
         <p
           id="anaconda"
-          class="draggable B 3 unplaced"
-          draggable="true"
+          class="draggable B 3 unplaced learning"
+          draggable="false"
           data-rank="1"
           data-tier=""
           data-order=""
@@ -331,8 +412,8 @@
         </p>
         <p
           id="kimura"
-          class="draggable C 3 unplaced"
-          draggable="true"
+          class="draggable C 3 unplaced learning"
+          draggable="false"
           data-rank="0"
           data-tier=""
           data-order=""
@@ -343,8 +424,8 @@
         </p>
         <p
           id="twister"
-          class="draggable D 5 unplaced"
-          draggable="true"
+          class="draggable D 5 unplaced learning"
+          draggable="false"
           data-rank="0"
           data-tier=""
           data-order=""
@@ -355,8 +436,8 @@
         </p>
         <p
           id="fish-hook"
-          class="draggable F 6 unplaced"
-          draggable="true"
+          class="draggable F 6 unplaced learning"
+          draggable="false"
           data-rank="0"
           data-tier=""
           data-order=""
@@ -367,8 +448,8 @@
         </p>
         <p
           id="americana"
-          class="draggable C 4 unplaced"
-          draggable="true"
+          class="draggable C 4 unplaced learning"
+          draggable="false"
           data-rank="2"
           data-tier=""
           data-order=""
@@ -379,8 +460,8 @@
         </p>
         <p
           id="omoplata"
-          class="draggable D 5 unplaced"
-          draggable="true"
+          class="draggable D 5 unplaced learning"
+          draggable="false"
           data-rank="1"
           data-tier=""
           data-order=""
@@ -394,7 +475,6 @@
     <div class="submit-area">
       <button class="submit-button" hidden disabled>submit</button>
     </div>
-
     <div class="results-info"></div>
     <!-- footer -->
     <footer id="footer">© Anson Hunnell, 2023</footer>

@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap");
+
 /* GLOBAL STYLING------------------------------------------------------------------------ */
 * {
   /*accounts for border or padding values when you specify an element's width and height*/
@@ -61,7 +62,6 @@ html {
 .rank {
   display: flex;
   align-items: center;
-  gap: 10px;
   flex: 1;
   background-color: rgb(25, 25, 25);
   height: 5rem;
@@ -121,6 +121,16 @@ html {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 25px;
 }
+
+p[draggable="false"] {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* p[draggable="false"]:active {
+  box-shadow: 1px 1px 2px #ccc;
+  transform: translateY(1px);
+} */
 
 .name {
   color: black;
@@ -191,7 +201,7 @@ dialog {
   border: 0px;
   border-radius: 5px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.671);
-  background-color: rgb(15, 15, 15);
+  background-color: rgb(41, 41, 41);
 }
 
 dialog[open] {
@@ -202,6 +212,17 @@ dialog[open] {
   dialog {
     width: 85%;
   }
+  .gif-modal-gif {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+}
+
+.gif-modal-gif {
+  width: 100%;
+
+  height: auto;
 }
 
 @keyframes show {
@@ -311,7 +332,6 @@ dialog::backdrop {
 .criteria-description {
   padding-left: 1rem;
   padding-right: 1rem;
-
   font-size: 24px;
 }
 
@@ -341,12 +361,12 @@ dialog::backdrop {
   background-color: black;
 }
 
-.interact {
+/* .interact {
   font-style: italic;
   text-align: center;
   font-size: 1rem;
   margin: 3px;
-}
+} */
 
 .scoring-system,
 .instructions,
@@ -398,6 +418,9 @@ button {
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .criteria-button,
@@ -407,11 +430,15 @@ button {
 .close-results,
 .close-sub-info,
 .submit-button,
-.refresh-button {
+.refresh-button,
+.instructions-button,
+.close-instructions,
+.close-cheat,
+.close-gif-modal {
   border: 2px solid rgb(82, 82, 82);
   border-radius: 5px;
   font-size: 1.3rem;
-  padding: 0 0.3rem 0 0.3rem;
+  padding: 0 0.1rem 0 0.1rem;
   background-color: rgb(97, 97, 97);
   color: white;
   transition: all 0.2s ease;
@@ -424,7 +451,11 @@ button {
 .close-scoring:hover,
 .close-results:hover,
 .close-sub-info:hover,
-.refresh-button:hover {
+.refresh-button:hover,
+.instructions-button:hover,
+.close-instructions:hover,
+.close-cheat:hover,
+.close-gif-modal:hover {
   border: 2px solid rgb(227, 227, 227);
   background-color: rgb(48, 48, 48);
   color: rgb(236, 236, 236);
@@ -448,6 +479,7 @@ button {
   background-color: rgb(0, 255, 255);
   color: rgb(255, 255, 255);
 }
+
 /* result info styling ------------------------------------------------------ */
 .results-info {
   display: none;

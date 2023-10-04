@@ -91,7 +91,7 @@ function descriptions() {
         "href",
         "https://www.youtube.com/watch?v=5I-8i7twrwM"
       )
-      subCounterLink.innerText = "defense/counter 1"
+      subCounterLink.innerText = "defend/counter 1"
       subCounterLink.setAttribute(
         "href",
         "https://www.youtube.com/watch?v=kzgvfbZtH-8",
@@ -148,7 +148,7 @@ function descriptions() {
         "href",
         "https://www.youtube.com/watch?v=4OO5CWZLbxI&t=11s"
       )
-      subCounterLink.innerText = "defense/counter 1"
+      subCounterLink.innerText = "defend/counter 1"
       subCounterLink.setAttribute(
         "href",
         "https://www.youtube.com/watch?v=woCl1q2drWo&t=1s"
@@ -217,7 +217,7 @@ function descriptions() {
         "href",
         "https://www.youtube.com/watch?v=7H9pD9Jow9U"
       )
-      subCounterLink.innerText = "defense/counter 1"
+      subCounterLink.innerText = "defend/counter 1"
       subCounterLink.setAttribute(
         "href",
         "https://www.youtube.com/watch?v=OkoO71HxN6U"

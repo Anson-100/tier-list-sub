@@ -8,6 +8,8 @@ import {
   handleTouchStart,
   containers,
   draggables,
+  tooltips,
+  tierLetters,
 } from "./script.js"
 
 import {
@@ -167,9 +169,11 @@ submitButton.addEventListener("click", e => {
   const finalScore = calculateTotalScore()
   const placedItems = Array.from(document.querySelectorAll(".placed"))
   const unplacedItems = Array.from(document.querySelectorAll(".unplaced"))
+  const toggleContainer = document.querySelector(".switch-container")
 
   draggables.forEach(draggable => {
     draggable.removeEventListener("touchstart", handleTouchStart)
+    draggable.classList.remove("learn")
   })
 
   containers.forEach(container => {
@@ -244,6 +248,11 @@ submitButton.addEventListener("click", e => {
     })
   })
 
+  toggleContainer.classList.add("hidden")
+  tierLetters.forEach(element => {
+    element.classList.toggle("learn")
+  })
+
   // submit modal stuff
   function handlePlacedItemClick() {
     subInfoModal.showModal()
@@ -306,10 +315,10 @@ submitButton.addEventListener("click", e => {
         thisContainer.id
       }-tier move. It should be ranked ${hiOrLow()}.`
     }
-
     descriptions()
   }
 })
+
 closeSubInfoModal.addEventListener("click", () => {
   subInfoModal.classList.add("hide")
   subInfoModal.addEventListener("animationend", function hideDialog() {
@@ -322,7 +331,7 @@ closeSubInfoModal.addEventListener("click", () => {
   subInfoLink.innerText = "learn"
   subActionLink.classList.remove("hidden")
   subCounterLink.classList.remove("hidden")
-  subCounterLink.innerText = "defense/counter"
+  subCounterLink.innerText = "defend/counter"
   subInfoLinkTwo.classList.add("hidden")
   subCounterLinkTwo.classList.add("hidden")
   subCounterLinkThree.classList.add("hidden")
